@@ -1,0 +1,27 @@
+{
+  "name": "paccounting",
+  "version": "1.0.0",
+  "description": "Personal Accounting",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Em-IT/paccounting.git"
+  },
+  "keywords": [
+    "EmIT",
+    "Emad",
+    "Armoun",
+    "Paccounting",
+    "Accounting",
+    "Personal"
+  ],
+  "author": "EmIT",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Em-IT/paccounting/issues"
+  },
+  "homepage": "https://github.com/Em-IT/paccounting#readme"
+}
