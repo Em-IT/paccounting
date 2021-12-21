@@ -4,7 +4,12 @@
   "description": "Personal Accounting",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "init-db": "babel-node src/backend/initializedb",
+    "build:fe": "webpack",
+    "build:be": "tsc",
+    "start:fe": "webpack-dev-server --open",
+    "start:be": "ts-node-dev ./src/backend",
+    "start": "cross-env NODE_ENV=production ts-node-dev ./src/backend"
   },
   "repository": {
     "type": "git",
