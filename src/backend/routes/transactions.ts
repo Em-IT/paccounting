@@ -3,7 +3,7 @@ import { readUserTransactions } from '../services/transactions';
 import { capsulateData } from '../helpers/apiTools';
 const router = express.Router();
 
-router.get('/transactions/user/:userId', async (req: Request, res: Response) => {
+router.get('/user/:userId/transactions', async (req: Request, res: Response) => {
   //TODO: read userId from auth token
   console.log('Read User Transactions API fired');
 
