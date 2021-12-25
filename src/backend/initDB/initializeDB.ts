@@ -1,5 +1,5 @@
 import { defaultState } from "./defaultState";
-import { connectDatabase } from "./connectDB";
+import { connectDatabase } from "../connectDB";
 
 const initializeDB = async () => {
   try {
