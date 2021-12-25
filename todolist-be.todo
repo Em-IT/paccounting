@@ -1,3 +1,10 @@
-☐ Install ESLint
-☐ Setup Test
-☐ Install Pretier
+Configs
+  ☐ Install ESLint
+  ☐ Setup Test
+  ☐ Install Pretier
+  ☐ Define colorful console logs
+
+Categories
+  ☐ Customize Categories for each user
+  ☐ Define default categories for suggestion
+  ☐ Define API for importing categories from default categories
