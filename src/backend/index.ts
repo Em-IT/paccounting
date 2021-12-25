@@ -6,7 +6,7 @@ import favicon from 'serve-favicon';
 import path from 'path';
 
 // Insert initial data to database, if it's empty
-//import './initializeDB';
+import './initializeDB';
 
 const port = 3003 || process.env.PORT;
 const app: Application = express();
