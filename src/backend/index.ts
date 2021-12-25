@@ -1,7 +1,7 @@
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import routes from './routes';
+import transactionsRoutes from './routes/transactions';
 import favicon from 'serve-favicon';
 import path from 'path';
 
@@ -22,7 +22,7 @@ app.use(
 app.use(favicon(path.join(__dirname, '..', '..', 'public', 'favicon.ico')));
 
 // Config apis prefix & routes
-app.use('/api/', routes);
+app.use('/api/', transactionsRoutes);
 
 // Handle frontend in production mode
 if(process.env.NODE_ENV === 'production') {
