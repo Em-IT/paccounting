@@ -1,2 +1,8 @@
-☐ Install Enzyme
-☐ Config Enzyme
+Config
+  ☐ Install Enzyme
+  ☐ Config Enzyme
+
+Transaction List
+  ☐ Design TransactionList UI
+  ☐ Read transaction list using saga
+  ☐ Create TransactionList component

@@ -1,8 +1,14 @@
 Configs
-  ☐ Install ESLint
-  ☐ Setup Test
-  ☐ Install Pretier
   ✔ Define colorful console logs @done(21-12-26 12:00)
+  ☐ Install ESLint
+  ☐ Install Pretier
+  ☐ Install Jest
+  ☐ Setup Test
+  ☐ Write first test
+  ☐ Add docker file
+
+Database
+  ☐ Design initial db design
 
 Categories
   ☐ Customize Categories for each user
