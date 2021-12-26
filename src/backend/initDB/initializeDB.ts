@@ -1,5 +1,6 @@
 import { defaultState } from "./defaultState";
 import { connectDatabase } from "../connectDB";
+import { logSuccess, logWarn, logInfo, logError } from './../helpers/logTools';
 
 const initializeDB = async () => {
   try {
@@ -10,23 +11,24 @@ const initializeDB = async () => {
     
     // No category is available in the database
     if(! anyCategory) {
+      logInfo('Initializing Database...');
 
       const collectionNames = Object.keys(defaultState);
       const collectionValues = Object.values(defaultState);
 
       for(let i=0; i<collectionNames.length; ++i) {
-        console.log('inserting collection ' + collectionNames[i]);
+        logWarn('inserting collection ' + collectionNames[i]);
         let collection = db.collection(collectionNames[i]);
         await collection.insertMany(collectionValues[i]);
-        console.log('collection ' + collectionNames[i] + ' inserted successfuly');
+        logSuccess('collection ' + collectionNames[i] + ' inserted successfuly');
       }
 
     }
     else {
-      console.log('data had been available in db from past, no need to initialize');
+      logInfo('Initial data is available in db');
     }
-  } catch(error) {
-    console.log('Error in initializing db');
+  } catch(error: any) {
+    logError('Error in initializing db', error.toString());
   }
 }
 

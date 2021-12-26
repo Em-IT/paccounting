@@ -1,9 +1,11 @@
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import transactionsRoutes from './routes/transactions';
 import favicon from 'serve-favicon';
 import path from 'path';
+
+import transactionsRoutes from './routes/transactions';
+import { logEmpty, logSuccess } from './helpers/logTools';
 
 // Insert initial data to database, if it's empty
 import './initDB/initializeDB';
@@ -28,12 +30,14 @@ app.use('/api/', transactionsRoutes);
 if(process.env.NODE_ENV === 'production') {
   app.use(express.static(path.resolve(__dirname, "..", "..", "dist")));
   app.get("/*", (_req: Request, res: Response) => {
-    console.log('Frontend Fired');
+    logSuccess('Frontend Fired');
     res.sendFile(path.resolve("index.html"));
   })
 }
 
 // Listen to API requests on the mentioned port
 app.listen(port, () => {
-  console.log('Backend server is running, listening on port ' + port);
+  logEmpty();
+  logSuccess('Backend server is running, listening on port ' + port);
+  logEmpty();
 });
