@@ -77,6 +77,7 @@
     "babel-plugin-twin": "^1.0.2",
     "eslint": "^8.5.0",
     "eslint-plugin-react": "^7.28.0",
+    "jest": "^27.4.5",
     "tailwindcss": "^2.2.19",
     "ts-node-dev": "^1.1.8",
     "twin.macro": "^2.8.1",
