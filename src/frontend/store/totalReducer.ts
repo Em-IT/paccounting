@@ -4,5 +4,5 @@ import { barReducer } from './reducers/barReducer';
 
 export const totalReducer = combineReducers({
   fooReducer,
-  barReducer
+  barReducer,
 });

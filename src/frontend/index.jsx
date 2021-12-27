@@ -8,9 +8,9 @@ import axios from 'axios';
 import Dashboard from './pages/Dashboard';
 
 const readHelloWorld = async () => {
-  const result = await axios.get(apiUrl + `/helloworld/` )
+  const result = await axios.get(apiUrl + `/helloworld/`);
   console.log(result.data);
-}
+};
 
 readHelloWorld();
 
@@ -21,5 +21,5 @@ ReactDOM.render(
       <Dashboard />
     </Provider>
   </StrictMode>,
-  document.getElementById('app')
+  document.getElementById('app'),
 );

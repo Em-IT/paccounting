@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from 'app/redux/store';
 import { action1, action2 } from "../store/actions/fooActions";
@@ -9,8 +9,10 @@ import Header from "../components/Header";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const fooState: fooStateType = useSelector((state: RootState) => state.fooReducer)
-  const barState: barStateType = useSelector((state: RootState) => state.barReducer)
+  const fooState: fooStateType =
+    useSelector((state: RootState) => state.fooReducer);
+  const barState: barStateType =
+    useSelector((state: RootState) => state.barReducer);
   
   console.log("barState = ", barState);
   
@@ -18,7 +20,7 @@ const Dashboard = () => {
     setTimeout(() => dispatch(startReadingData("Emad")), 2000);
     setTimeout(() => dispatch(action1), 4000);
     setTimeout(() => dispatch(action2(150)), 6000);
-  }, [])
+  }, []);
 
   return (
     <div>
@@ -36,13 +38,15 @@ const Dashboard = () => {
         <span>Error: {barState.errorMessage}</span>
       )}
 
-      { !barState.isLoading && !barState.errorMessage && barState.data && barState.data.length === 0 && (
+      { !barState.isLoading && !barState.errorMessage &&
+        barState.data && barState.data.length === 0 && (
         <span>No Data in Database</span>
       )}
 
       <ul>
-        { !barState.isLoading && !barState.errorMessage && barState.data && barState.data.length > 0 && (
-          barState.data.map( (d: any, i: number) => (
+        { !barState.isLoading && !barState.errorMessage &&
+          barState.data && barState.data.length > 0 && (
+          barState.data.map((d: any, i: number) => (
             <li key={i}>Data {i}: {d.value}</li>
           ))
         )}
@@ -51,7 +55,7 @@ const Dashboard = () => {
       <br />
       Foo Value: {fooState}
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

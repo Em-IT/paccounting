@@ -9,33 +9,34 @@ export interface barStateType {
 const defaultState: barStateType = {
   data: [],
   isLoading: false,
-  errorMessage: ''
-}
+  errorMessage: '',
+};
 
-export const barReducer = (state: barStateType = defaultState, action: barActionType): barStateType => {
-  switch (action.type) {
+export const barReducer =
+  (state: barStateType = defaultState, action: barActionType): barStateType => {
+    switch (action.type) {
     case barActions.LOADING:
       return {
         ...state,
         isLoading: true,
         data: [],
-        errorMessage: ''
+        errorMessage: '',
       };
     case barActions.FINISHED:
       return {
         ...state,
         isLoading: false,
         data: action.payload,
-        errorMessage: ''
+        errorMessage: '',
       };
     case barActions.FAILED:
       return {
         ...state,
         isLoading: false,
         data: [],
-        errorMessage: action.payload
+        errorMessage: action.payload,
       };
     default:
       return state;
-  }
-}
+    }
+  };
