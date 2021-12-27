@@ -1,10 +1,11 @@
 import { MongoClient, Db } from 'mongodb';
 
-const dbUrl: string = 'mongodb://localhost:27017/paccounting' || process.env.MONGODB_URI;
+const dbUrl: string =
+  'mongodb://localhost:27017/paccounting' || process.env.MONGODB_URI;
 let db: Db;
 
 export const connectDatabase = async () => {
-  if(db)
+  if (db)
     return db;
 
   const client: MongoClient = new MongoClient(dbUrl);
@@ -14,4 +15,4 @@ export const connectDatabase = async () => {
   db = client.db();
 
   return db;
-}
+};

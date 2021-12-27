@@ -1,14 +1,14 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function capsulateData(data: any, error?: any) {
-  let result = {
+  const result = {
     data: null,
     isSuccessful: true,
-    errorMessage: ''
-  }
-  if(error) {
+    errorMessage: '',
+  };
+  if (error) {
     result.errorMessage = error.toString();
     result.isSuccessful = false;
-  }
-  else {
+  } else {
     result.data = data;
   }
   return result;

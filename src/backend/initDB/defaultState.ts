@@ -4,11 +4,11 @@ export const defaultState = {
       id: 1,
       firstName: 'Emad',
       lastName: 'Armoun',
-    }
+      userName: 'admin',
+    },
   ],
   transactions: [
     {
-      id: 1,
       title: 'Buy a toy',
       amount: 180000,
       userId: 1,
@@ -16,10 +16,9 @@ export const defaultState = {
       primaryCatId: 2,
       secondaryCatId: 1,
       tags: ['Birthday'],
-      isUnexpected: true
+      isUnexpected: true,
     },
     {
-      id: 2,
       title: 'Grocery',
       amount: 75000,
       userId: 1,
@@ -27,38 +26,38 @@ export const defaultState = {
       primaryCatId: 1,
       secondaryCatId: 1,
       tags: [],
-      isUnexpected: false
+      isUnexpected: false,
     },
   ],
   primaryCats: [
     {
       id: 1,
-      title: "Food"
+      title: "Food",
     },
     {
       id: 2,
-      title: "Free of Charge"
+      title: "Free of Charge",
     },
     {
       id: 3,
-      title: "Other"
+      title: "Other",
     },
   ],
   secondaryCats: [
     {
       id: 1,
       primaryCatId: 1,
-      title: "Food"
+      title: "Food",
     },
     {
       id: 2,
       primaryCatId: 1,
-      title: "Snack"
+      title: "Snack",
     },
     {
       id: 3,
       primaryCatId: 2,
-      title: "Gift"
+      title: "Gift",
     },
   ],
-}
+};
