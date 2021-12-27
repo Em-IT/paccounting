@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { defaultState } from "./defaultState";
 import { connectDatabase } from "../connectDB";
 import { logSuccess, logWarn, logInfo, logError } from './../helpers/logTools';
