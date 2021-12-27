@@ -1,6 +1,6 @@
 Configs
   ✔ Define colorful console logs @done(21-12-26 12:00)
-  ☐ Install ESLint
+  ✔ Install ESLint @done(21-12-27 09:32)
   ☐ Install Pretier
   ☐ Install Jest
   ☐ Setup Test
@@ -9,6 +9,7 @@ Configs
 
 Database
   ☐ Design initial db design
+  ☐ Define locale for data
 
 Categories
   ☐ Customize Categories for each user
