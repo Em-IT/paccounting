@@ -2,13 +2,14 @@ Configs
   ✔ Define colorful console logs @done(21-12-26 12:00)
   ✔ Install ESLint @done(21-12-27 09:32)
   ☐ Install Pretier
-  ☐ Install Jest
-  ☐ Setup Test
-  ☐ Write first test
+  ✔ Install Jest @done(21-12-27 11:36)
+  ✔ Setup Test @done(21-12-27 11:36)
+  ✔ Write first test @done(21-12-27 11:36)
   ☐ Add docker file
 
 Database
-  ☐ Design initial db design
+  ✔ Design initial db design @done(21-12-27 11:36)
+  ☐ Add initial db design code generators
   ☐ Define locale for data
 
 Categories
