@@ -10,7 +10,8 @@
     "start:fe": "webpack-dev-server --open",
     "start:be": "ts-node-dev ./src/backend",
     "start": "cross-env NODE_ENV=production ts-node-dev ./src/backend",
-    "test": "jest"
+    "test": "jest",
+    "test:w": "jest --watchAll"
   },
   "repository": {
     "type": "git",
