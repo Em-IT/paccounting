@@ -5,7 +5,8 @@ Configs
   ✔ Install Jest @done(21-12-27 11:36)
   ✔ Setup Test @done(21-12-27 11:36)
   ✔ Write first test @done(21-12-27 11:36)
-  ☐ Add docker file
+  ✔ Add docker file @done(21-12-30 00:31)
+  ☐ Separate mongodb docker file and create a docker compose
 
 Database
   ✔ Design initial db design @done(21-12-27 11:36)
