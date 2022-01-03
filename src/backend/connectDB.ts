@@ -1,7 +1,7 @@
 import { MongoClient, Db } from 'mongodb';
 
 const dbUrl: string =
-  process.env.MONGODB_URI || 'mongodb://localhost:27017/paccounting';
+  process.env.MONGODB_URI || 'mongodb://mongo:27017/paccounting';
 let db: Db;
 
 export const connectDatabase = async () => {
