@@ -1,0 +1,20 @@
+version: '3'
+services:
+  paccounting-app:
+    container_name: paccounting
+    image: paccounting
+    restart: always
+    build: .
+    ports:
+      - "3003:3003"
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    expose:
+      - 27017
+    ports:
+      - '27018:27017'
