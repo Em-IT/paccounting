@@ -7,6 +7,9 @@ Configs
   ✔ Write first test @done(21-12-27 11:36)
   ✔ Add docker file @done(21-12-30 00:31)
   ✔ Separate mongodb docker file and create a docker compose @done(22-01-04 10:15)
+  ✔ Install Mongoose @done(22-01-04 10:16)
+  ☐ Config Mongoose
+  ☐ Install express-validator
 
 Database
   ✔ Design initial db design @done(21-12-27 11:36)
@@ -17,3 +20,8 @@ Categories
   ☐ Customize Categories for each user
   ☐ Define default categories for suggestion
   ☐ Define API for importing categories from default categories
+
+Main Process
+  ☐ Write some sample APIs
+  ☐ Change boilerplate of project using Mongoose
+  ☐ Use express validator
