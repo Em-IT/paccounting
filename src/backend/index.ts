@@ -10,7 +10,7 @@ import { logEmpty, logSuccess } from './helpers/logTools';
 // Insert initial data to database, if it's empty
 import './initDB/initializeDB';
 
-const port = 3003 || process.env.PORT;
+const port = process.env.PORT || 3003;
 const app: Application = express();
 
 // Define middlewares
