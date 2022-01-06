@@ -1,15 +1,10 @@
-import { connectDatabase } from "../connectDB";
-import { CreateTransactionDTO } from "./TransactionType";
+import Transaction, { ITransaction } from "../models/Transaction";
 
 export const readUserTransactions = async (userId: number) => {
-  const db = await connectDatabase();
-  const transactionsCollection = db.collection('transactions');
-  return transactionsCollection.find({ userId: userId }).toArray();
+  return await Transaction.find({ userId: userId });
 };
 
-export const addUserTransaction = async (transaction: CreateTransactionDTO) => {
-  const db = await connectDatabase();
-  const transactionsCollection = db.collection('transactions');
-  const result = await transactionsCollection.insertOne(transaction);
-  return result.insertedId;
+export const addUserTransaction = async (transaction: ITransaction) => {
+  const result = await Transaction.create(transaction);
+  return result._id;
 };
