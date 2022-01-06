@@ -5,6 +5,7 @@ import favicon from 'serve-favicon';
 import path from 'path';
 
 import transactionsRoutes from './routes/transactions';
+import userProfileRotes from './routes/userProfiles';
 import { logEmpty, logSuccess } from './helpers/logTools';
 import { connectDatabase } from './connectDB';
 
@@ -30,6 +31,7 @@ app.use(favicon(path.join(__dirname, '..', '..', 'public', 'favicon.ico')));
 
 // Config apis prefix & routes
 app.use('/api/', transactionsRoutes);
+app.use('/api/', userProfileRotes);
 
 // Handle frontend in production mode
 if (process.env.NODE_ENV === 'production') {
