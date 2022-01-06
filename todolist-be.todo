@@ -8,8 +8,10 @@ Configs
   ✔ Add docker file @done(21-12-30 00:31)
   ✔ Separate mongodb docker file and create a docker compose @done(22-01-04 10:15)
   ✔ Install Mongoose @done(22-01-04 10:16)
-  ☐ Config Mongoose
+  ✔ Config Mongoose @done(22-01-06 12:25)
+  ✔ Install validator @done(22-01-06 12:25)
   ☐ Install express-validator
+  ☐ Install http-status-codes
 
 Database
   ✔ Design initial db design @done(21-12-27 11:36)
@@ -22,6 +24,12 @@ Categories
   ☐ Define API for importing categories from default categories
 
 Main Process
-  ☐ Write some sample APIs
-  ☐ Change boilerplate of project using Mongoose
+  ✔ Write some sample APIs @done(22-01-06 12:26)
+  ✔ Change boilerplate of project using Mongoose @done(22-01-06 12:26)
   ☐ Use express validator
+  ☐ Use validator to validate models
+  ☐ Write a plugin for createdAt & updatedAt fields
+  ☐ Write sample Virtual Property on schemas
+  ☐ Write sample static methods on schemas
+  ☐ Write sample instance methods on schemas
+  ☐ use HttpStatusCodes
