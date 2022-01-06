@@ -6,12 +6,17 @@ import path from 'path';
 
 import transactionsRoutes from './routes/transactions';
 import { logEmpty, logSuccess } from './helpers/logTools';
+import { connectDatabase } from './connectDB';
 
+// eslint-disable-next-line multiline-comment-style
 // Insert initial data to database, if it's empty
-import './initDB/initializeDB';
+// import './initDB/initializeDB';
 
 const port = process.env.PORT || 3003;
 const app: Application = express();
+
+// Connect to MongoDB
+connectDatabase();
 
 // Define middlewares
 app.use(

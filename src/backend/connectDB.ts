@@ -1,21 +1,22 @@
-import { MongoClient, Db } from 'mongodb';
+import { connect } from "mongoose";
 import dotenv from 'dotenv';
+import { logError, logSuccess } from "./helpers/logTools";
 
 dotenv.config();
-const dbUrl: string =
-  process.env.MONGODB_URI || 'mongodb://mongo:27017/paccounting';
-let db: Db;
 
 export const connectDatabase = async () => {
-  if (db)
-    return db;
+  try {
+    const DEFAULT_DB_URL = 'mongodb://mongo:27017/paccounting';
+    const dbUrl: string = process.env.MONGODB_URI || DEFAULT_DB_URL;
+    // console.log('dbUrl =', dbUrl);
 
-  // console.log('dbUrl =', dbUrl);
-  const client: MongoClient = new MongoClient(dbUrl);
-           
-  await client.connect();
-       
-  db = client.db();
+    await connect(dbUrl);
+    logSuccess('Connected to MongoDB');
 
-  return db;
+  } catch (error: any) {
+
+    logError(error?.message);
+    process.exit(1);
+
+  }
 };
