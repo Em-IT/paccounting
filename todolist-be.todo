@@ -10,8 +10,8 @@ Configs
   ✔ Install Mongoose @done(22-01-04 10:16)
   ✔ Config Mongoose @done(22-01-06 12:25)
   ✔ Install validator @done(22-01-06 12:25)
+  ✔ Install http-status-codes @done(22-01-07 10:01)
   ☐ Install express-validator
-  ☐ Install http-status-codes
 
 Database
   ✔ Design initial db design @done(21-12-27 11:36)
@@ -28,8 +28,8 @@ Main Process
   ✔ Change boilerplate of project using Mongoose @done(22-01-06 12:26)
   ✔ Write a plugin for createdAt & updatedAt fields @done(22-01-07 09:38)
   ✔ Use validator to validate models @done(22-01-07 09:58)
+  ✔ use HttpStatusCodes @done(22-01-07 10:07)
   ☐ Use express validator
   ☐ Write sample Virtual Property on schemas
   ☐ Write sample static methods on schemas
   ☐ Write sample instance methods on schemas
-  ☐ use HttpStatusCodes
