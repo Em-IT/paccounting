@@ -1,4 +1,5 @@
 import { Document, Model, model, Schema } from "mongoose";
+import validator from 'validator';
 import addModifyTimes from "./plugins/addModifyTimes";
 
 /**
@@ -46,9 +47,18 @@ const userProfileSchema: Schema = new Schema({
   password: {
     type: String,
     required: true,
+    validate: (value: string) => {
+      const isValid = validator.isStrongPassword(value, {
+        minLength: 6,
+        minLowercase: 1, minUppercase: 1,
+        minNumbers: 1, minSymbols: 1,
+      });
+      return isValid;
+    },
   },
   avatar: {
     type: String,
+    validate: (value: string) => validator.isURL(value),
   },
 });
 

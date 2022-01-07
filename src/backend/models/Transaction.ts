@@ -1,4 +1,5 @@
 import { Document, Model, model, Schema } from "mongoose";
+import validator from 'validator';
 import addModifyTimes from "./plugins/addModifyTimes";
 
 /**
@@ -34,6 +35,7 @@ const transactionSchema: Schema = new Schema({
   amount: {
     type: Number,
     required: true,
+    validate: (value: number) => validator.isNumeric(value.toString()),
   },
   userId: {
     type: Schema.Types.ObjectId,
