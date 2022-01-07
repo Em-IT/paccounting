@@ -27,7 +27,7 @@ Main Process
   ✔ Write some sample APIs @done(22-01-06 12:26)
   ✔ Change boilerplate of project using Mongoose @done(22-01-06 12:26)
   ✔ Write a plugin for createdAt & updatedAt fields @done(22-01-07 09:38)
-  ☐ Use validator to validate models
+  ✔ Use validator to validate models @done(22-01-07 09:58)
   ☐ Use express validator
   ☐ Write sample Virtual Property on schemas
   ☐ Write sample static methods on schemas
