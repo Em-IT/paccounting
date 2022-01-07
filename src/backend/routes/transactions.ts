@@ -1,8 +1,10 @@
 import express, { Request, Response } from 'express';
+import { StatusCodes } from 'http-status-codes';
 
 import {
   addUserTransaction,
-  readUserTransactions } from '../services/transactions';
+  readUserTransactions,
+} from '../services/transactions';
 import { capsulateData } from '../helpers/apiTools';
 import { logApi } from './../helpers/logTools';
 
@@ -19,9 +21,13 @@ router.get('/user/:userId/transactions',
         throw ("Invalid User ID");
 
       const transactions = await readUserTransactions(userId);
-      res.status(200).json(capsulateData(transactions));
+      res
+        .status(StatusCodes.OK)
+        .json(capsulateData(transactions));
     } catch (error) {
-      res.status(500).json(capsulateData(null, error));
+      res
+        .status(StatusCodes.INTERNAL_SERVER_ERROR)
+        .json(capsulateData(null, error));
     }
   },
 );
@@ -39,9 +45,13 @@ router.post('/transaction', async (req: Request, res: Response) => {
 
     // const result = await addUserTransaction(transaction, userId);
     const result = await addUserTransaction(transaction);
-    res.status(200).json(capsulateData(result));
+    res
+      .status(StatusCodes.OK)
+      .json(capsulateData(result));
   } catch (error) {
-    res.status(500).json(capsulateData(null, error));
+    res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .json(capsulateData(null, error));
   }
 });
 
