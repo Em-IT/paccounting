@@ -1,4 +1,5 @@
 import { Document, Model, model, Schema } from "mongoose";
+import addModifyTimes from "./plugins/addModifyTimes";
 
 /**
  * Interface to model the Profile Schema for TypeScript.
@@ -67,6 +68,8 @@ const transactionSchema: Schema = new Schema({
     required: true,
   },
 });
+
+transactionSchema.plugin(addModifyTimes);
 
 // eslint-disable-next-line max-len
 const Transaction: Model<ITransaction> = model("Transaction", transactionSchema);

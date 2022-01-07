@@ -1,4 +1,5 @@
 import { Document, Model, model, Schema } from "mongoose";
+import addModifyTimes from "./plugins/addModifyTimes";
 
 /**
  * Interface to model the User Schema
@@ -50,6 +51,8 @@ const userProfileSchema: Schema = new Schema({
     type: String,
   },
 });
+
+userProfileSchema.plugin(addModifyTimes);
 
 const UserProfile: Model<IUserProfile> =
   model("UserProfile", userProfileSchema);
