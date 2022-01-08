@@ -5,13 +5,22 @@ import { body } from 'express-validator';
 
 import { capsulateData } from '../helpers/apiTools';
 import { logApi } from './../helpers/logTools';
-import { addUser } from '../services/userProfiles';
+import { addUser, findUserByUsername } from '../services/userProfiles';
 import { processedValidationResult } from './../helpers/validationTools';
 
 const router = express.Router();
 
 router.post('/user',
-  body('username', "Username is required").not().isEmpty(),
+  body('username', "Username is required")
+    .not().isEmpty()
+    .custom(value => {
+      return findUserByUsername(value).then((user: any) => {
+        if (user)
+          return Promise.reject('Username already in use');
+        else
+          return true;
+      });
+    }),
   body('firstName', "First Name is required").exists(),
   body('lastName', "Last Name is required").exists(),
   body('categories').exists(),
