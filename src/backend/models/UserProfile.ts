@@ -13,12 +13,12 @@ import addModifyTimes from "./plugins/addModifyTimes";
  */
 export interface IUserProfile extends Document {
   // _id: string;
-  userName: string;
+  username: string;
   firstName: string;
   lastName: string;
   categories: [string];
   password: string;
-  avatar: string;
+  avatar?: string;
 }
 
 const userProfileSchema: Schema = new Schema({
@@ -29,7 +29,7 @@ const userProfileSchema: Schema = new Schema({
    *   unique: true,
    * },
    */
-  userName: {
+  username: {
     type: String,
     required: true,
     unique: true,
