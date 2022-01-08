@@ -22,13 +22,6 @@ export interface IUserProfile extends Document {
 }
 
 const userProfileSchema: Schema = new Schema({
-  /*
-   * _id: {
-   *   type: String,
-   *   required: true,
-   *   unique: true,
-   * },
-   */
   username: {
     type: String,
     required: true,
