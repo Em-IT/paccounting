@@ -7,6 +7,7 @@ import { capsulateData } from '../helpers/apiTools';
 import { logApi } from './../helpers/logTools';
 import { addUser, findUserByUsername } from '../services/userProfiles';
 import { processedValidationResult } from './../helpers/validationTools';
+import { IUserProfile } from './../models/UserProfile';
 
 const router = express.Router();
 
@@ -14,7 +15,7 @@ router.post('/user',
   body('username', "Username is required")
     .not().isEmpty()
     .custom(value => {
-      return findUserByUsername(value).then((user: any) => {
+      return findUserByUsername(value).then((user: IUserProfile | null) => {
         if (user)
           return Promise.reject('Username already in use');
         else
