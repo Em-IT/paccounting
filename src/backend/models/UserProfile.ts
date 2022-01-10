@@ -53,6 +53,9 @@ const userProfileSchema: Schema = new Schema({
     type: String,
     validate: (value: string) => validator.isURL(value),
   },
+},
+{
+  toJSON: { virtuals: true },
 });
 
 // Add createdAt & updatedAt fields
