@@ -9,3 +9,8 @@ export const findUserByUsername = async (username: string) => {
   const result = await UserProfile.findOne({ username: username });
   return result;
 };
+
+export const readAllUsers = async () => {
+  const result = await UserProfile.find();
+  return result;
+};

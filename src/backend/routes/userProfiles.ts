@@ -5,7 +5,8 @@ import { body } from 'express-validator';
 
 import { capsulateData } from '../helpers/apiTools';
 import { logApi } from './../helpers/logTools';
-import { addUser, findUserByUsername } from '../services/userProfiles';
+import { addUser, findUserByUsername, readAllUsers }
+  from '../services/userProfiles';
 import { processedValidationResult } from './../helpers/validationTools';
 import { IUserProfile } from './../models/UserProfile';
 
@@ -64,5 +65,14 @@ router.post('/user',
     }
   },
 );
+
+router.get('/users', async (_req: Request, res: Response) => {
+  logApi('Read all Users');
+
+  const result = await readAllUsers();
+  return res
+    .status(StatusCodes.OK)
+    .json(capsulateData(result));
+});
 
 export default router;
