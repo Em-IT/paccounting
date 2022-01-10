@@ -12,10 +12,10 @@ import addModifyTimes from "./plugins/addModifyTimes";
  * @param avatar:string
  */
 export interface IUserProfile extends Document {
-  // _id: string;
   username: string;
   firstName: string;
   lastName: string;
+  fullName?: string; // virtual field
   categories: [string];
   password: string;
   avatar?: string;
@@ -55,7 +55,22 @@ const userProfileSchema: Schema = new Schema({
   },
 });
 
+// Add createdAt & updatedAt fields
 userProfileSchema.plugin(addModifyTimes);
+
+// Add virtual fullName field (getter function)
+userProfileSchema.virtual('fullName').get(function (this: IUserProfile) {
+  return this.firstName + ' ' + this.lastName;
+});
+
+// Add virtual fullName field (setter function)
+userProfileSchema.virtual('fullName').set(
+  function (this: IUserProfile, fullName: string) {
+    const nameParts = fullName.split(' ');
+    this.firstName = nameParts[0];
+    this.lastName = nameParts[1];
+  },
+);
 
 const UserProfile: Model<IUserProfile> =
   model("UserProfile", userProfileSchema);
