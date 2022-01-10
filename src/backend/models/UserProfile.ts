@@ -75,6 +75,11 @@ userProfileSchema.virtual('fullName').set(
   },
 );
 
+userProfileSchema.methods.getAbbreviatedFullName =
+  function (this: IUserProfile) {
+    return this.firstName + ' ' + this.lastName[0];
+  };
+
 const UserProfile: Model<IUserProfile> =
   model("UserProfile", userProfileSchema);
 
