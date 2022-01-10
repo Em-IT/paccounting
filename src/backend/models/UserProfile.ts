@@ -7,18 +7,18 @@ import addModifyTimes from "./plugins/addModifyTimes";
  * @param username:string
  * @param firstName:string
  * @param lastName:string
- * @param categories:[string]
  * @param password:string
  * @param avatar:string
+ * @param categories:[string]
  */
 export interface IUserProfile extends Document {
   username: string;
   firstName: string;
   lastName: string;
   fullName?: string; // virtual field
-  categories: [string];
   password: string;
   avatar?: string;
+  categories: [string];
 }
 
 const userProfileSchema: Schema = new Schema({
@@ -33,9 +33,6 @@ const userProfileSchema: Schema = new Schema({
   },
   lastName: {
     type: String,
-  },
-  categories: {
-    type: [String],
   },
   password: {
     type: String,
@@ -52,6 +49,9 @@ const userProfileSchema: Schema = new Schema({
   avatar: {
     type: String,
     validate: (value: string) => validator.isURL(value),
+  },
+  categories: {
+    type: [String],
   },
 },
 {
