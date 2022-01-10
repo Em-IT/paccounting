@@ -75,6 +75,7 @@ userProfileSchema.virtual('fullName').set(
   },
 );
 
+// Add instance method to read abbreviated full name
 userProfileSchema.methods.getAbbreviatedFullName =
   function (this: IUserProfile) {
     return this.firstName + ' ' + this.lastName[0];
