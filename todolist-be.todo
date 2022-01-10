@@ -30,6 +30,6 @@ Main Process
   ✔ Use validator to validate models @done(22-01-07 09:58)
   ✔ use HttpStatusCodes @done(22-01-07 10:07)
   ✔ Use express validator @done(22-01-08 23:25)
-  ☐ Write sample Virtual Property on schemas
-  ☐ Write sample static methods on schemas
+  ✔ Write sample Virtual Property on schemas @done(22-01-10 08:11)
+  ✔ Write sample static methods on schemas @done(22-01-10 08:26)
   ☐ Write sample instance methods on schemas
