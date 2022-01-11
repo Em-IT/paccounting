@@ -8,7 +8,9 @@
     "build:fe": "webpack",
     "build:be": "tsc",
     "start:fe": "webpack-dev-server --open",
+    "sf": "yarn start:fe",
     "start:be": "ts-node-dev ./src/backend",
+    "sb": "yarn start:be",
     "start": "cross-env NODE_ENV=production ts-node-dev ./src/backend",
     "test": "jest",
     "test:w": "jest --watchAll"
