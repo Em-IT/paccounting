@@ -13,6 +13,7 @@ export const connectDatabase = async () => {
     await connect(dbUrl);
     logSuccess('Connected to MongoDB');
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
 
     logError(error?.message);
