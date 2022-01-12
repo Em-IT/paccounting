@@ -15,12 +15,14 @@ Configs
 
 Database
   ✔ Design initial db design @done(21-12-27 11:36)
-  ☐ Add initial db design code generators
+  ✔ Add initial db design code generators @done(22-01-12 10:20)
   ☐ Define locale for data
 
 Categories
-  ☐ Customize Categories for each user
-  ☐ Define default categories for suggestion
+  ✔ Define default categories for suggestion @done(22-01-12 10:20)
+  ✔ Customize Categories for each user @done(22-01-12 10:20)
+  ☐ Update Model of user, using inital categories structure
+  ☐ Read default categories & insert them for new users
   ☐ Define API for importing categories from default categories
 
 Main Process
