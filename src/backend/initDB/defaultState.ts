@@ -18,7 +18,17 @@ export const defaultState: IDefaultState = {
       firstName: 'Emad',
       lastName: 'Armoun',
       password: 'Zar@123',
-      categories: [],
+      categories: [{
+        title: 'Food',
+        isIncome: false,
+        subCategories: [{
+          title: 'Groceries',
+        }, {
+          title: "Fruit",
+        }, {
+          title: "Meat",
+        }],
+      }],
     },
   ],
   transactions: [

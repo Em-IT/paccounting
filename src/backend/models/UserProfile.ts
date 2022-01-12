@@ -59,7 +59,13 @@ const userProfileSchema: Schema = new Schema({
     validate: (value: string) => validator.isURL(value),
   },
   categories: {
-    type: [String],
+    type: [{
+      title: String,
+      isIncome: Boolean,
+      subCategories: [{
+        title: String,
+      }],
+    }],
   },
 },
 {
