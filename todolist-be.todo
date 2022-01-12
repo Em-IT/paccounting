@@ -21,7 +21,8 @@ Database
 Categories
   ✔ Define default categories for suggestion @done(22-01-12 10:20)
   ✔ Customize Categories for each user @done(22-01-12 10:20)
-  ☐ Update Model of user, using inital categories structure
+  ✔ Update Model of user, using inital categories structure @done(22-01-12 11:00)
+  ☐ Update Model of Transactions to have category
   ☐ Read default categories & insert them for new users
   ☐ Define API for importing categories from default categories
 
