@@ -18,7 +18,13 @@ export interface IUserProfilePure {
   fullName?: string; // virtual field
   password: string;
   avatar?: string;
-  categories: [string];
+  categories: Array<{
+    title: string;
+    isIncome: boolean;
+    subCategories: Array<{
+      title: string;
+    }>;
+  }>;
 }
 
 export interface IUserProfile extends IUserProfilePure, Document {}

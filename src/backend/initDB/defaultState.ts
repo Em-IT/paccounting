@@ -18,7 +18,7 @@ export const defaultState: IDefaultState = {
       firstName: 'Emad',
       lastName: 'Armoun',
       password: 'Zar@123',
-      categories: [""],
+      categories: [],
     },
   ],
   transactions: [
