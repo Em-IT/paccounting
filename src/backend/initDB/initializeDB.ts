@@ -1,47 +1,56 @@
-/* eslint-disable max-len */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { defaultState } from "./defaultState";
-import { connectDatabase } from "../connectDB";
-import { logSuccess, logWarn, logInfo, logError } from './../helpers/logTools';
+import {
+  logSuccess, logWarn, logInfo, logError,
+} from './../helpers/logTools';
+import UserProfile from "../models/UserProfile";
+import Transaction from "../models/Transaction";
+import DefaultCategory from "../models/DefaultCategory";
+
+const logStartInit = (collectionName: string) => {
+  logWarn('inserting initial data to ' +
+    collectionName + ' collection');
+};
+
+const logFinishInit = (collectionName: string) => {
+  logSuccess('Initial data of ' + collectionName +
+    ' collection inserted successfuly');
+};
 
 const initializeDB = async () => {
   try {
-    const db = await connectDatabase();
-
-    // any arbitary category in the database
-    const anyCategory = await db.collection('primaryCats').findOne();
     
-    // No category is available in the database
-    if (! anyCategory) {
+    // any arbitary category in the database
+    const anyUser = await UserProfile.findOne();
+    const anyTransaction = await Transaction.findOne();
+    const anyDefaultCategory = await DefaultCategory.findOne();
+    
+    if (!anyUser || !anyTransaction || !anyDefaultCategory)
       logInfo('Initializing Database...');
-
-      db.createCollection('defaultCategories', { validator: { $jsonSchema: { bsonType: 'object', required: ['title',          'isIncome',          'subCategories'], properties: { title: { bsonType: 'string' }, isIncome: { bsonType: 'bool' }, subCategories: { bsonType: 'array', items: {
-        required: ['title'], properties: { title: { bsonType: 'string' } } } } }         }      } });
-      
-      db.createCollection('users', { validator: { $jsonSchema: { bsonType: 'object', required: ['firstName',          'lastName',          'userName',          'password',          'avatar',          'categories'], properties: { firstName: { bsonType: 'string' }, lastName: { bsonType: 'string' }, userName: { bsonType: 'string' }, password: { bsonType: 'string' }, avatar: { bsonType: 'string' }, categories: { bsonType: 'array', items: {
-        required: ['title',          'isIncome',          'subCategories'], properties: { title: { bsonType: 'string' }, isIncome: { bsonType: 'bool' }, subCategories: { bsonType: 'array', items: {
-          required: ['title'], properties: { title: { bsonType: 'string' } } } } } } } }         }      } });
-          
-      db.createCollection(
-        'transactions', { validator: { $jsonSchema: { bsonType: 'object', required: ['title',          'amount',          'isIncome',          'userId',          'date',          'catId',          'subCatId',          'tags',          'isUnexpected'], properties: { title: { bsonType: 'string' }, amount: { bsonType: 'int' }, isIncome: { bsonType: 'bool' }, userId: { bsonType: 'objectId' }, date: { bsonType: 'date' }, catId: { bsonType: 'objectId' }, subCatId: { bsonType: 'objectId' }, tags: { bsonType: 'array', items: { bsonType: 'string' } }, isUnexpected: { bsonType: 'bool' }, description: { bsonType: 'string' } }         }      } });
-
-      const collectionNames = Object.keys(defaultState);
-      const collectionValues = Object.values(defaultState);
-
-      for (let i = 0; i < collectionNames.length; ++i) {
-        logWarn('inserting collection ' + collectionNames[i]);
-        const collection = db.collection(collectionNames[i]);
-        await collection.insertMany(collectionValues[i]);
-        logSuccess('collection ' + collectionNames[i]
-          + ' inserted successfuly');
-      }
-
-    } else {
+    else
       logInfo('Initial data is available in db');
+    
+    if (! anyUser) {
+      logStartInit('UserProfile');
+      UserProfile.insertMany(defaultState.users);
+      logFinishInit('UserProfile');
     }
+
+    if (! anyTransaction) {
+      logStartInit('Transaction');
+      Transaction.insertMany(defaultState.transactions);
+      logFinishInit('Transaction');
+    }
+
+    if (! anyDefaultCategory) {
+      logStartInit('DefaultCategory');
+      DefaultCategory.insertMany(defaultState.defaultCategories);
+      logFinishInit('DefaultCategory');
+    }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     logError('Error in initializing db', error.toString());
   }
 };
 
-initializeDB();
+export default initializeDB;

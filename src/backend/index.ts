@@ -9,16 +9,16 @@ import userProfileRoutes from './routes/userProfiles';
 import defaultCategoryRoutes from './routes/defaultCategories';
 import { logEmpty, logSuccess } from './helpers/logTools';
 import { connectDatabase } from './connectDB';
-
-// eslint-disable-next-line multiline-comment-style
-// Insert initial data to database, if it's empty
-// import './initDB/initializeDB';
+import initializeDB from './initDB/initializeDB';
 
 const port = process.env.PORT || 3003;
 const app: Application = express();
 
 // Connect to MongoDB
 connectDatabase();
+
+// Insert initial data to database, if it's empty
+initializeDB();
 
 // Define middlewares
 app.use(

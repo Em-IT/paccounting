@@ -1,63 +1,89 @@
-export const defaultState = {
+import { ObjectId } from 'mongodb';
+import { IUserProfilePure } from './../models/UserProfile';
+import { IDefaultCategoryPure } from './../models/DefaultCategory';
+
+interface IDefaultState {
+
+  users: Array<IUserProfilePure>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  transactions: Array<any>,
+  defaultCategories: Array<IDefaultCategoryPure>
+
+}
+
+export const defaultState: IDefaultState = {
   users: [
     {
-      id: 1,
+      username: 'admin',
       firstName: 'Emad',
       lastName: 'Armoun',
-      userName: 'admin',
+      password: 'Zar@123',
+      categories: [""],
     },
   ],
   transactions: [
     {
       title: 'Buy a toy',
       amount: 180000,
-      userId: 1,
+      isIncome: false,
+      userId: new ObjectId(),
       date: new Date(2021, 12, 23, 18, 14),
-      primaryCatId: 2,
-      secondaryCatId: 1,
+      primaryCat: 'a',
+      secondaryCat: 'b',
       tags: ['Birthday'],
       isUnexpected: true,
+      description: '',
     },
     {
       title: 'Grocery',
       amount: 75000,
-      userId: 1,
+      isIncome: false,
+      userId: new ObjectId(),
       date: new Date(2021, 12, 23, 11, 42),
-      primaryCatId: 1,
-      secondaryCatId: 1,
+      primaryCat: 'a',
+      secondaryCat: 'b',
       tags: [],
       isUnexpected: false,
+      description: '',
     },
   ],
-  primaryCats: [
+  defaultCategories: [
     {
-      id: 1,
       title: "Food",
-    },
-    {
-      id: 2,
+      isIncome: false,
+      subCategories: [
+        {
+          title: "Groceries",
+        }, {
+          title: "Fruit",
+        }, {
+          title: "Meat",
+        },
+      ],
+    }, {
       title: "Free of Charge",
-    },
-    {
-      id: 3,
+      isIncome: false,
+      subCategories: [
+        {
+          title: "Gift",
+        }, {
+          title: "Chairity",
+        },
+      ],
+    }, {
       title: "Other",
-    },
-  ],
-  secondaryCats: [
-    {
-      id: 1,
-      primaryCatId: 1,
-      title: "Food",
-    },
-    {
-      id: 2,
-      primaryCatId: 1,
-      title: "Snack",
-    },
-    {
-      id: 3,
-      primaryCatId: 2,
-      title: "Gift",
+      isIncome: false,
+      subCategories: [
+        {
+          title: "Other",
+        }, {
+          title: "Home tools",
+        }, {
+          title: "Mobile Charge",
+        }, {
+          title: "Internet services",
+        },
+      ],
     },
   ],
 };
