@@ -6,13 +6,15 @@ import { Document, Model, model, Schema } from "mongoose";
  * @param isIncome:boolean
  * @param subCategories:Map
  */
-export interface IDefaultCategory extends Document {
+export interface IDefaultCategoryPure {
   title: string;
   isIncome: boolean;
-  subCategories: [{
+  subCategories: Array<{
     title: string;
-  }];
+  }>;
 }
+
+export interface IDefaultCategory extends IDefaultCategoryPure, Document {}
 
 const defaultCategorySchema: Schema = new Schema({
   title: {

@@ -11,7 +11,7 @@ import addModifyTimes from "./plugins/addModifyTimes";
  * @param avatar:string
  * @param categories:[string]
  */
-export interface IUserProfile extends Document {
+export interface IUserProfilePure {
   username: string;
   firstName: string;
   lastName: string;
@@ -20,6 +20,8 @@ export interface IUserProfile extends Document {
   avatar?: string;
   categories: [string];
 }
+
+export interface IUserProfile extends IUserProfilePure, Document {}
 
 const userProfileSchema: Schema = new Schema({
   username: {
