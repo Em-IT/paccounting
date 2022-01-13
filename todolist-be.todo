@@ -22,9 +22,11 @@ Categories
   ✔ Define default categories for suggestion @done(22-01-12 10:20)
   ✔ Customize Categories for each user @done(22-01-12 10:20)
   ✔ Update Model of user, using inital categories structure @done(22-01-12 11:00)
-  ☐ Update Model of Transactions to have category
+  ✔ Update Model of Transactions to have category @done(22-01-12 11:28)
   ☐ Read default categories & insert them for new users
   ☐ Define API for importing categories from default categories
+  ☐ Separate Categories subcollection from UserProfile collection, with a FK
+  ☐ Separate subCategories collection from categories collection, with a FK
 
 Main Process
   ✔ Write some sample APIs @done(22-01-06 12:26)
