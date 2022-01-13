@@ -1,5 +1,8 @@
+// import mongoose, { Schema } from 'mongoose';
 import { ObjectId } from 'mongodb';
+import { ObjectID } from 'bson';
 import { IUserProfilePure } from './../models/UserProfile';
+// import { ITransactionPure } from '../models/Transaction';
 import { IDefaultCategoryPure } from './../models/DefaultCategory';
 
 interface IDefaultState {
@@ -36,10 +39,16 @@ export const defaultState: IDefaultState = {
       title: 'Buy a toy',
       amount: 180000,
       isIncome: false,
-      userId: new ObjectId(),
+      // userId: new mongoose.Types.ObjectId(),
       date: new Date(2021, 12, 23, 18, 14),
-      primaryCat: 'a',
-      secondaryCat: 'b',
+      primaryCat: {
+        id: new ObjectId(), // mongoDB ObjectId
+        title: 'a',
+      },
+      secondaryCat: {
+        id: new ObjectId(), // mongoDB ObjectId
+        title: 'b',
+      },
       tags: ['Birthday'],
       isUnexpected: true,
       description: '',
@@ -48,10 +57,16 @@ export const defaultState: IDefaultState = {
       title: 'Grocery',
       amount: 75000,
       isIncome: false,
-      userId: new ObjectId(),
+      // userId: new ObjectId(),
       date: new Date(2021, 12, 23, 11, 42),
-      primaryCat: 'a',
-      secondaryCat: 'b',
+      primaryCat: {
+        id: new ObjectID(), // bson ObjectId
+        title: 'a',
+      },
+      secondaryCat: {
+        id: new ObjectID(), // bson ObjectId
+        title: 'b',
+      },
       tags: [],
       isUnexpected: false,
       description: '',

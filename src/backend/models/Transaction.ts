@@ -1,5 +1,6 @@
-import { Document, Model, model, Schema } from "mongoose";
+import mongoose, { Document, Model, model, Schema } from "mongoose";
 import validator from 'validator';
+// import { ObjectId } from 'mongodb';
 import addModifyTimes from "./plugins/addModifyTimes";
 
 /**
@@ -15,21 +16,26 @@ import addModifyTimes from "./plugins/addModifyTimes";
  * @param isUnexpected:boolean
  * @param description:string
  */
-export interface ITransaction extends Document {
+export interface ITransactionPure {
   title: string;
   amount: number;
   isIncome: boolean;
-  userId: Schema.Types.ObjectId;
+  userId: mongoose.ObjectId;
   date: Date;
-  // primaryCatId: Schema.Types.ObjectId;
-
-  // secondaryCatId: Schema.Types.ObjectId;
-  primaryCat: string;
-  secondaryCat: string;
-  tags: [string];
+  primaryCat: {
+    id: Schema.Types.ObjectId,
+    title: string,
+  };
+  secondaryCat: {
+    id: Schema.Types.ObjectId,
+    title: string,
+  };
+  tags: Array<string>;
   isUnexpected: boolean;
   description?: string;
 }
+
+export interface ITransaction extends ITransactionPure, Document {}
 
 const transactionSchema: Schema = new Schema({
   title: {
@@ -52,22 +58,30 @@ const transactionSchema: Schema = new Schema({
     type: Date,
     required: true,
   },
-  /*
-   * primaryCatId: {
-   *   type: Schema.Types.ObjectId,
-   *   required: true,
-   * },
-   * secondaryCatId: {
-   *   type: Schema.Types.ObjectId,
-   *   required: true,
-   * },
-   */
   primaryCat: {
-    type: String,
+    type: {
+      id: {
+        type: Schema.Types.ObjectId,
+        required: true,
+      },
+      title: {
+        type: String,
+        required: true,
+      },
+    },
     required: true,
   },
   secondaryCat: {
-    type: String,
+    type: {
+      id: {
+        type: Schema.Types.ObjectId,
+        required: true,
+      },
+      title: {
+        type: String,
+        required: true,
+      },
+    },
     required: true,
   },
   tags: {
