@@ -2,7 +2,7 @@ import { defaultState } from "./defaultState";
 import {
   logSuccess, logWarn, logInfo, logError,
 } from './../helpers/logTools';
-import UserProfile from "../models/UserProfile";
+import UserProfile, { IUserProfile } from "../models/UserProfile";
 import Transaction from "../models/Transaction";
 import DefaultCategory from "../models/DefaultCategory";
 
@@ -29,14 +29,18 @@ const initializeDB = async () => {
     else
       logInfo('Initial data is available in db');
     
+    let initialUsers: Array<IUserProfile> = [];
     if (! anyUser) {
       logStartInit('UserProfile');
-      UserProfile.insertMany(defaultState.users);
+      initialUsers = await UserProfile.insertMany(defaultState.users);
       logFinishInit('UserProfile');
     }
 
     if (! anyTransaction) {
       logStartInit('Transaction');
+      if (initialUsers.length > 0)
+        for (let i = 0; i < defaultState.transactions.length; ++i)
+          defaultState.transactions[i].userId = initialUsers[0]._id;
       Transaction.insertMany(defaultState.transactions);
       logFinishInit('Transaction');
     }
