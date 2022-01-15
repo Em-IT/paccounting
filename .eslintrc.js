@@ -24,7 +24,7 @@ module.exports = {
   ],
   "rules": {
     strict: ['error', 'global'], // Use Strict mode, (means define every variable before use)
-    'multiline-comment-style': ['error', 'starred-block'], // Enforce to use star style comment (/* * <comment1> * <comment2> */), instead of consecutive single line comment or bare-block comment (/* <comment> */)
+    // 'multiline-comment-style': ['error', 'starred-block'], // Enforce to use star style comment (/* * <comment1> * <comment2> */), instead of consecutive single line comment or bare-block comment (/* <comment> */)
     'spaced-comment': ['error', 'always'], // Add a space after single comment sign (//) and before comment text
     semi: ['error', 'always'], // End each statement with a semi-colon
     'semi-spacing': 'error', // No extra space between semicolon & previous text
