@@ -1,6 +1,7 @@
+import { ObjectId } from "mongodb";
 import Transaction, { ITransaction } from "../models/Transaction";
 
-export const readUserTransactions = async (userId: number) => {
+export const readUserTransactions = async (userId: ObjectId) => {
   return await Transaction.find({ userId: userId });
 };
 

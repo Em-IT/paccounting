@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import { ObjectId } from 'mongodb';
 
 import {
   addUserTransaction,
@@ -12,13 +13,14 @@ const router = express.Router();
 
 router.get('/user/:userId/transactions',
   async (req: Request, res: Response) => {
-  // TODO: read userId from auth token
     logApi('Read User Transactions');
 
     try {
-      const userId = parseInt(req.params.userId);
-      if (!userId)
-        throw ("Invalid User ID");
+      // TODO: read userId from auth token
+      const userId = new ObjectId(
+        req.headers["userid"]?.toString() ||
+        '61e08a74927d9e1bc3cfbe79',
+      );
 
       const transactions = await readUserTransactions(userId);
       res
