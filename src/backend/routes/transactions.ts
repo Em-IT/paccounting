@@ -4,14 +4,14 @@ import { ObjectId } from 'mongodb';
 
 import {
   addUserTransaction,
-  readUserTransactions,
+  readUserCosts,
 } from '../services/transactions';
 import { capsulateData } from '../helpers/apiTools';
 import { logApi } from './../helpers/logTools';
 
 const router = express.Router();
 
-router.get('/user/:userId/transactions',
+router.get('/my-costs',
   async (req: Request, res: Response) => {
     logApi('Read User Transactions');
 
@@ -22,7 +22,7 @@ router.get('/user/:userId/transactions',
         '61e08a74927d9e1bc3cfbe79',
       );
 
-      const transactions = await readUserTransactions(userId);
+      const transactions = await readUserCosts(userId);
       res
         .status(StatusCodes.OK)
         .json(capsulateData(transactions));
