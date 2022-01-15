@@ -1,3 +1,15 @@
+Main Parts of Product Backend
+  ☐ Add new cost API
+  ☐ Show List of costs API
+  ☐ Main dashboard reports Api
+  ☐ Sign In API
+  ☐ Sign Up API
+  ☐ Select categories API
+  ☐ Modify categories API
+  ☐ Add new income API
+  ☐ Show List of incomes API
+  ☐ Main dashboard income reports Api
+☐ 
 Configs
   ☐ Install Pretier (Cancel)
   ✔ Define colorful console logs @done(21-12-26 12:00)

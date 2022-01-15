@@ -1,3 +1,18 @@
+Main Parts of Product Frontend
+  ☐ Cost List
+	☐ Add new Cost
+	☐ Main Layout
+	☐ Dashboard
+	☐ Sign In
+	☐ Sign Up
+	☐ Profile edit
+	☐ Modify categories
+	☐ Income List
+	☐ Add new Income
+	☐ Modify Income categories
+	☐ Income reports on dashboard
+	☐ Filter on cost list
+
 Config
   ✔ Install Enzyme @done(21-12-28 17:37)
   ✔ Config Enzyme @done(21-12-28 17:37)
