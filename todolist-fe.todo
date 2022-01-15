@@ -1,5 +1,5 @@
 Main Parts of Product Frontend
-  ☐ Cost List
+  ✔ Cost List @done(22-01-15 10:30)
 	☐ Add new Cost
 	☐ Main Layout
 	☐ Dashboard
@@ -18,7 +18,8 @@ Config
   ✔ Config Enzyme @done(21-12-28 17:37)
   ☐ Make UI multi language
 
-Transaction List
+Cost List
+  ✔ Create TransactionList component @done(22-01-15 10:31)
+  ✔ Read transaction list @done(22-01-15 10:30)
   ☐ Design TransactionList UI
-  ☐ Read transaction list using saga
-  ☐ Create TransactionList component
+  ☐ Develop UI
