@@ -5,7 +5,6 @@ import { action1, action2 } from "../store/actions/fooActions";
 import { startReadingData } from "../store/actions/barActions";
 import { fooStateType } from "frontend/store/reducers/fooReducer";
 import { barStateType } from "frontend/store/reducers/barReducer";
-import Header from "../components/Header";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -24,8 +23,6 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Header />
-
       <h2>Dashboard</h2>
 
       <br />
