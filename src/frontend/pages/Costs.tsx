@@ -10,7 +10,7 @@ const Costs = () => {
   }, []);
 
   const readCosts = async () => {
-    const result = await axios.get(apiUrl + `/user/1/transactions/`, {
+    const result = await axios.get(apiUrl + `/my-costs`, {
       headers: {
         'content-type': 'text/json',
         'userId': '61e08a74927d9e1bc3cfbe79',
