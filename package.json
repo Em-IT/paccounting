@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "init-db": "babel-node src/backend/initializedb",
-    "build:fe": "webpack",
-    "build:be": "tsc",
-    "start:fe": "webpack-dev-server --open",
-    "sf": "yarn start:fe",
-    "start:be": "ts-node-dev ./src/backend",
-    "sb": "yarn start:be",
+    "build:frontend": "webpack",
+    "build:backend": "tsc",
+    "start:frontend": "webpack-dev-server --open",
+    "sf": "yarn start:frontend",
+    "start:backend": "ts-node-dev ./src/backend",
+    "sb": "yarn start:backend",
     "start": "cross-env NODE_ENV=production ts-node-dev ./src/backend",
     "test": "jest",
     "test:w": "jest --watchAll"
