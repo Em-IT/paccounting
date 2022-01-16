@@ -3,7 +3,7 @@ import useApiCall from '../helpers/apiTools';
 
 const Costs = () => {
 
-  const { data: costs, isLoading, errorMessage } = useApiCall(
+  const { data: costs, dataReady, isLoading, errorMessage } = useApiCall(
     '/my-costs',
     { 'userId': '61e08a74927d9e1bc3cfbe79' },
   );
@@ -17,20 +17,20 @@ const Costs = () => {
       { ! isLoading && errorMessage && <span>Error: {errorMessage}</span> }
 
       {
-        ! isLoading && ! errorMessage && costs && costs.length > 0 &&
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          costs.map((cost: any, index: number) => (
-            <div key={index}>
-              {cost.title}
-              {cost.amount}
-              {cost.date}
-              {cost.primaryCat.title}
-              {cost.secondaryCat.title}
-              {cost.tags}
-              {cost.isUnexpected ? 'True' : 'False'}
-              {cost.description}
-            </div>
-          ))
+        // TODO: define Cost interface
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        dataReady && costs.map((cost: any, index: number) => (
+          <div key={index}>
+            {cost.title}
+            {cost.amount}
+            {cost.date}
+            {cost.primaryCat.title}
+            {cost.secondaryCat.title}
+            {cost.tags}
+            {cost.isUnexpected ? 'True' : 'False'}
+            {cost.description}
+          </div>
+        ))
       }
     </div>
   );

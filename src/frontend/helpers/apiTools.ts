@@ -12,6 +12,7 @@ import apiBaseUrl from "../apiUrl";
 export interface ICapsule {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: Array<any>;
+  dataReady: boolean;
   isLoading: boolean;
   errorMessage: string;
 }
@@ -23,6 +24,7 @@ const useApiCall = (apiName: string,
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
+  const dataReady = !isLoading && !errorMessage && data && data.length > 0;
 
   useEffect(() => {
     fetchData();
@@ -57,7 +59,7 @@ const useApiCall = (apiName: string,
     setIsLoading(false);
   };
 
-  return { data, isLoading, errorMessage };
+  return { data, dataReady, isLoading, errorMessage };
 };
 
 export default useApiCall;
