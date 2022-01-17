@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import GlobalStyles from './GlobalStyles';
 import { store } from './store/index';
 import Dashboard from './pages/Dashboard';
-import Costs from './pages/Costs';
+import CostsList from './pages/Costs/CostsList';
 import Header from './components/Header';
 
 ReactDOM.render(
@@ -18,7 +18,7 @@ ReactDOM.render(
 
         <Switch>
           <Route exact path="/"><Dashboard /></Route>
-          <Route path="/costs"><Costs /></Route>
+          <Route path="/costs"><CostsList /></Route>
         </Switch>
       </Router>
     </Provider>
