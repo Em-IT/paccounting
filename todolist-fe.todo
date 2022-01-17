@@ -17,6 +17,7 @@ Config
   ✔ Install Enzyme @done(21-12-28 17:37)
   ✔ Config Enzyme @done(21-12-28 17:37)
   ☐ Make UI multi language
+	☐ Enable "Hot Module Replacement"
 
 Cost List
   ✔ Create TransactionList component @done(22-01-15 10:31)
