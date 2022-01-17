@@ -10,7 +10,11 @@ const CostsList = () => {
     '/my-costs',
     { 'userId': '61e08a74927d9e1bc3cfbe79' },
   );
-  
+
+  // TODO: Add Responsive Design
+  // TODO: Add Card Design with toggle button
+  // TODO: make the table in zebra style
+  // TODO: Improve UI
   return (
     <div tw='w-8/12 mx-auto my-5'>
       <h1 tw='mx-auto my-5 text-indigo-500 text-center'>Costs List</h1>
