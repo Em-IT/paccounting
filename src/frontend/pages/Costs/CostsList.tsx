@@ -1,7 +1,7 @@
 import React from 'react';
 import useApiCall from '../../helpers/apiTools';
 
-const Costs = () => {
+const CostsList = () => {
 
   const { data: costs, dataReady, isLoading, errorMessage } = useApiCall(
     '/my-costs',
@@ -16,24 +16,49 @@ const Costs = () => {
 
       { ! isLoading && errorMessage && <span>Error: {errorMessage}</span> }
 
-      {
-        // TODO: define Cost interface
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        dataReady && costs.map((cost: any, index: number) => (
-          <div key={index}>
-            {cost.title}
-            {cost.amount}
-            {cost.date}
-            {cost.primaryCat.title}
-            {cost.secondaryCat.title}
-            {cost.tags}
-            {cost.isUnexpected ? 'True' : 'False'}
-            {cost.description}
-          </div>
-        ))
-      }
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            // TODO: define Cost interface
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            dataReady && costs.map((cost: any, index: number) => (
+              <tr key={index}>
+                <td>
+                  {cost.title}
+                </td>
+                <td>
+                  {cost.amount}
+                </td>
+                <td>
+                  {cost.date}
+                </td>
+                <td>
+                  {cost.primaryCat.title}
+                </td>
+                <td>
+                  {cost.secondaryCat.title}
+                </td>
+                <td>
+                  {cost.tags}
+                </td>
+                <td>
+                  {cost.isUnexpected ? '✔' : 'X'}
+                </td>
+                <td>
+                  {cost.description}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
     </div>
   );
 };
 
-export default Costs;
+export default CostsList;
