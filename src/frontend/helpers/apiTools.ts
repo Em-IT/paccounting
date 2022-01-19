@@ -9,22 +9,25 @@ import apiBaseUrl from "../apiUrl";
   // customHeaders?: Array<any>;
 }*/
 
-export interface ICapsule {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: Array<any>;
+export interface ICapsule<Type> {
+  data: Type | undefined;
+  dataArray: Array<Type>;
   dataReady: boolean;
   isLoading: boolean;
   errorMessage: string;
 }
 
-// TODO: Make this hook Generic to get the data type
 // TODO: Define the headers array type
-const useApiCall = (apiName: string,
-  customHeaders?: AxiosRequestHeaders): ICapsule => {
+const useApiCall = <Type>(apiName: string,
+  customHeaders?: AxiosRequestHeaders): ICapsule<Type> => {
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState([]);
+  const [isArray, setIsArray] = useState(true);
+  const [data, setData] = useState<Type>();
+  const [dataArray, setDataArray] = useState<Array<Type>>([]);
   const [errorMessage, setErrorMessage] = useState('');
-  const dataReady = !isLoading && !errorMessage && data && data.length > 0;
+  const dataReady = !isLoading && !errorMessage && (
+    data !== undefined || (isArray && dataArray.length > 0)
+  );
 
   useEffect(() => {
     fetchData();
@@ -44,10 +47,19 @@ const useApiCall = (apiName: string,
       // console.log('fetched data=', result);
 
       if (result?.data?.isSuccessful) {
-        setData(result.data.data);
+
+        if (Array.isArray(result.data.data)) {
+          setDataArray(result.data.data);
+          setIsArray(true);
+        } else {
+          setData(result.data.data);
+          setIsArray(false);
+        }
+
         setErrorMessage('');
       } else {
-        setData([]);
+        setData(undefined);
+        setDataArray([]);
         setErrorMessage(result.data.errorMessage);
       }
 
@@ -59,7 +71,8 @@ const useApiCall = (apiName: string,
     setIsLoading(false);
   };
 
-  return { data, dataReady, isLoading, errorMessage };
+  // return { data: (data || dataArray), dataReady, isLoading, errorMessage };
+  return { data, dataArray, dataReady, isLoading, errorMessage };
 };
 
 export default useApiCall;

@@ -7,7 +7,8 @@ import ICost from '../../types/ICost';
 
 const CostsList = () => {
 
-  const { data: costs, dataReady, isLoading, errorMessage } = useApiCall(
+  const { dataArray: costs, dataReady, isLoading, errorMessage } = 
+  useApiCall<ICost>(
     '/my-costs',
     { 'userId': '61e08a74927d9e1bc3cfbe79' },
   );
