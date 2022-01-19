@@ -3,6 +3,7 @@ import React from 'react';
 import tw from 'twin.macro';
 
 import useApiCall from '../../helpers/apiTools';
+import ICost from '../../types/ICost';
 
 const CostsList = () => {
 
@@ -40,9 +41,7 @@ const CostsList = () => {
           </thead>
           <tbody>
             {
-              // TODO: define Cost interface
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              dataReady && costs.map((cost: any, index: number) => (
+              dataReady && costs.map((cost: ICost, index: number) => (
                 <tr key={index}>
                   <td>
                     {cost.title}
