@@ -5,6 +5,7 @@ import tw, { css } from 'twin.macro';
 import useApiCall from '../../helpers/apiTools';
 import ICost from '../../types/ICost';
 import { addCommas } from '../../helpers/formatters';
+import { toUKLongDate } from '../../helpers/dateTools';
 
 const CostsList = () => {
 
@@ -56,7 +57,7 @@ const CostsList = () => {
                     {addCommas(cost.amount)}
                   </td>
                   <td css={[styles.cell]}>
-                    {cost.date}
+                    {toUKLongDate(cost.date)}
                   </td>
                   <td css={[styles.cell]}>
                     {cost.primaryCat.title}
