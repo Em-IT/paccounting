@@ -14,3 +14,15 @@ export const makeShortenedText = (text: string, limit: number, tail = "..."): st
     ? `${text.substring(0, limit - tail.length)}${tail}`
     : text
 );
+
+export const addLeadingZero = (number: number, digitsCount = 2) => {
+
+  let leadingZero = "";
+  for (let index = 0; index < digitsCount - number.toString().length; index++) {
+
+    leadingZero = `0${leadingZero}`;
+
+  }
+  return leadingZero + number;
+
+};
