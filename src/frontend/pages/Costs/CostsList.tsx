@@ -1,6 +1,6 @@
 import React from 'react';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import tw from 'twin.macro';
+import tw, { css } from 'twin.macro';
 
 import useApiCall from '../../helpers/apiTools';
 import ICost from '../../types/ICost';
@@ -13,9 +13,12 @@ const CostsList = () => {
     { 'userId': '61e08a74927d9e1bc3cfbe79' },
   );
 
+  const styles = {
+    row: tw`p-4 text-gray-600 cursor-pointer hover:text-gray-900 hover:font-bold odd:bg-gray-100`,
+  };
+
   // TODO: Add Responsive Design
   // TODO: Add Card Design with toggle button
-  // TODO: make the table in zebra style
   // TODO: Improve UI
   return (
     <div tw='w-8/12 mx-auto my-5'>
@@ -43,7 +46,7 @@ const CostsList = () => {
           <tbody>
             {
               dataReady && costs.map((cost: ICost, index: number) => (
-                <tr key={index}>
+                <tr key={index} css={[styles.row]}>
                   <td>
                     {cost.title}
                   </td>
