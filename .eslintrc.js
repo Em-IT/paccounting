@@ -30,7 +30,7 @@ module.exports = {
     'semi-spacing': 'error', // No extra space between semicolon & previous text
     'no-extra-semi': 'error', // No extra semicolon at the end of each statement
     'no-unexpected-multiline': 'error', // Not allow multilines which make ambiguity
-    'max-len': ['error', { 'code': 80 }], // Define max length for a code line
+    'max-len': ['error', { 'code': 100 }], // Define max length for a code line
     'comma-style': ['error', 'last'], // Where to place comma, in a multiline list (last / first)
     'comma-dangle': ['error', 'always-multiline'], // Add a comma after the last item of a multiline list
     indent: ['error', 2], // Define the indent size
