@@ -8,3 +8,9 @@ export const toFloatingPrecision = (floatNumber: number, precision: number) => {
 
   return integerPart + parseFloat(floatingPart.toPrecision(precision));
 };
+
+export const makeShortenedText = (text: string, limit: number, tail = "..."): string => (
+  text.length >= limit
+    ? `${text.substring(0, limit - tail.length)}${tail}`
+    : text
+);
