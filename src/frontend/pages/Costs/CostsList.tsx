@@ -14,7 +14,8 @@ const CostsList = () => {
   );
 
   const styles = {
-    row: tw`p-4 text-gray-600 cursor-pointer hover:text-gray-900 hover:font-bold odd:bg-gray-100`,
+    row: tw`text-gray-600 cursor-pointer hover:text-gray-900 hover:font-bold odd:bg-gray-100`,
+    cell: tw`p-6`,
   };
 
   // TODO: Add Responsive Design
@@ -47,28 +48,28 @@ const CostsList = () => {
             {
               dataReady && costs.map((cost: ICost, index: number) => (
                 <tr key={index} css={[styles.row]}>
-                  <td>
+                  <td css={[styles.cell]}>
                     {cost.title}
                   </td>
-                  <td>
+                  <td css={[styles.cell]}>
                     {cost.amount}
                   </td>
-                  <td>
+                  <td css={[styles.cell]}>
                     {cost.date}
                   </td>
-                  <td>
+                  <td css={[styles.cell]}>
                     {cost.primaryCat.title}
                   </td>
-                  <td>
+                  <td css={[styles.cell]}>
                     {cost.secondaryCat.title}
                   </td>
-                  <td>
+                  <td css={[styles.cell]}>
                     {cost.tags}
                   </td>
-                  <td>
-                    {cost.isUnexpected ? '✔' : 'X'}
+                  <td css={[styles.cell]}>
+                    {cost.isUnexpected ? '✔' : '❌'}
                   </td>
-                  <td>
+                  <td css={[styles.cell]}>
                     {cost.description}
                   </td>
                 </tr>
