@@ -18,9 +18,9 @@ const CostsList = () => {
   const styles = {
     row: tw`text-gray-600 cursor-pointer hover:text-gray-900 hover:font-bold odd:bg-gray-100`,
     cell: tw`p-6`,
+    card: tw`bg-white rounded-lg my-4`,
   };
 
-  // TODO: Add Responsive Design
   // TODO: Add Card Design with toggle button
   // TODO: Improve UI
   return (
@@ -33,7 +33,40 @@ const CostsList = () => {
 
         { ! isLoading && errorMessage && <span>Error: {errorMessage}</span> }
 
-        <table tw='w-full bg-white rounded-lg'>
+        <div tw='md:hidden'>
+          {
+            dataReady && costs.map((cost: ICost, index: number) => (
+              <div key={index} css={[styles.card]}>
+                <div css={[styles.cell]}>
+                  {cost.title}
+                </div>
+                <div css={[styles.cell]}>
+                  {addCommas(cost.amount)}
+                </div>
+                <div css={[styles.cell]}>
+                  {toUKLongDate(cost.date)}
+                </div>
+                <div css={[styles.cell]}>
+                  {cost.primaryCat.title}
+                </div>
+                <div css={[styles.cell]}>
+                  {cost.secondaryCat.title}
+                </div>
+                <div css={[styles.cell]}>
+                  {cost.tags}
+                </div>
+                <div css={[styles.cell]}>
+                  {cost.isUnexpected ? '✔' : '❌'}
+                </div>
+                <div css={[styles.cell]}>
+                  {cost.description}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
+        <table tw='w-full bg-white rounded-lg hidden md:block'>
           <thead>
             <tr>
               <th>Title</th>
