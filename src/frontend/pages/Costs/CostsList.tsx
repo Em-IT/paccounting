@@ -18,47 +18,55 @@ const CostsList = () => {
   const styles = {
     row: tw`text-gray-600 cursor-pointer hover:text-gray-900 hover:font-bold odd:bg-gray-100`,
     cell: tw`p-6`,
-    card: tw`bg-white rounded-lg my-4`,
+    card: tw`bg-white rounded-lg my-4 p-4`,
+    cardRow: tw`flex flex-row justify-between`,
+    tag: tw`rounded-md bg-indigo-400 px-2 py-0.5 text-xs`,
   };
 
-  // TODO: Add Card Design with toggle button
-  // TODO: Improve UI
+  // TODO: Send title of page to header using redux
+  // TODO: add a better spinner
+  // TODO: read currency from api
   return (
-    <div tw='w-8/12 mx-auto my-5'>
+    <div tw='w-11/12 md:w-10/12 lg:w-9/12 2xl:w-8/12 mx-auto my-5'>
       <h1 tw='mx-auto my-5 text-indigo-500 text-center'>Costs List</h1>
 
       <div tw=''>
 
-        { isLoading && <span>Is Loading ...</span> }
-
         { ! isLoading && errorMessage && <span>Error: {errorMessage}</span> }
 
         <div tw='md:hidden'>
+          { isLoading && <tr><td colSpan={1}>Is Loading ...</td></tr> }
+
           {
             dataReady && costs.map((cost: ICost, index: number) => (
               <div key={index} css={[styles.card]}>
-                <div css={[styles.cell]}>
-                  {cost.title}
+                <div css={[styles.cardRow, tw`text-lg`]}>
+                  <span tw='font-bold'>
+                    {cost.title}
+                  </span>
+                  <span>
+                    ({addCommas(cost.amount)} $)
+                  </span>
                 </div>
-                <div css={[styles.cell]}>
-                  {addCommas(cost.amount)}
+                <div css={[styles.cardRow, tw`text-gray-800 italic`]}>
+                  <span>
+                    {toUKLongDate(cost.date)}
+                  </span>
+                  <span>
+                    {cost.primaryCat.title} \ {cost.secondaryCat.title}
+                  </span>
                 </div>
-                <div css={[styles.cell]}>
-                  {toUKLongDate(cost.date)}
+                <div css={[styles.cardRow]}>
+                  <span>
+                    {cost.tags.map(t => (
+                      <span key={t} css={[styles.tag]}>{t}</span>
+                    ))}
+                  </span>
+                  <span>
+                    {cost.isUnexpected ? '✔' : ''}
+                  </span>
                 </div>
-                <div css={[styles.cell]}>
-                  {cost.primaryCat.title}
-                </div>
-                <div css={[styles.cell]}>
-                  {cost.secondaryCat.title}
-                </div>
-                <div css={[styles.cell]}>
-                  {cost.tags}
-                </div>
-                <div css={[styles.cell]}>
-                  {cost.isUnexpected ? '✔' : '❌'}
-                </div>
-                <div css={[styles.cell]}>
+                <div css={[styles.cardRow, tw`text-gray-700`]}>
                   {cost.description}
                 </div>
               </div>
@@ -80,14 +88,15 @@ const CostsList = () => {
             </tr>
           </thead>
           <tbody>
+            { isLoading && <span>Is Loading ...</span> }
             {
               dataReady && costs.map((cost: ICost, index: number) => (
                 <tr key={index} css={[styles.row]}>
-                  <td css={[styles.cell]}>
+                  <td css={[styles.cell, tw`font-bold`]}>
                     {cost.title}
                   </td>
                   <td css={[styles.cell]}>
-                    {addCommas(cost.amount)}
+                    {addCommas(cost.amount)} $
                   </td>
                   <td css={[styles.cell]}>
                     {toUKLongDate(cost.date)}
@@ -104,7 +113,7 @@ const CostsList = () => {
                   <td css={[styles.cell]}>
                     {cost.isUnexpected ? '✔' : '❌'}
                   </td>
-                  <td css={[styles.cell]}>
+                  <td css={[styles.cell, tw`text-gray-700`]}>
                     {cost.description}
                   </td>
                 </tr>
