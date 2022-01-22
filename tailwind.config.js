@@ -6,10 +6,10 @@ module.exports = {
         mypurple : {
           DEFAULT: "#c600ff",
           light: "#e073ff",
-          dark: "#79009c"
-        }
+          dark: "#79009c",
+        },
       },
     },
   },
   plugins: [],
-}
+};
