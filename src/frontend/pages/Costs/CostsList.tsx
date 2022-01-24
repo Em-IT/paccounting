@@ -6,6 +6,7 @@ import useApiCall from '../../helpers/apiTools';
 import ICost from '../../types/ICost';
 import { addCommas } from '../../helpers/formatters';
 import { toUKLongDate } from '../../helpers/dateTools';
+import LoadingSpinner from '../../components/LoadingSpinner';
 
 const CostsList = () => {
 
@@ -24,8 +25,8 @@ const CostsList = () => {
   };
 
   // TODO: Send title of page to header using redux
-  // TODO: add a better spinner
   // TODO: read currency from api
+  // TODO: separate components of 2 types of cost list
   return (
     <div tw='w-11/12 md:w-10/12 lg:w-9/12 2xl:w-8/12 mx-auto my-5'>
       <h1 tw='mx-auto my-5 text-indigo-500 text-center'>Costs List</h1>
@@ -35,7 +36,7 @@ const CostsList = () => {
         { ! isLoading && errorMessage && <span>Error: {errorMessage}</span> }
 
         <div tw='md:hidden'>
-          { isLoading && <tr><td colSpan={1}>Is Loading ...</td></tr> }
+          { isLoading && <LoadingSpinner /> }
 
           {
             dataReady && costs.map((cost: ICost, index: number) => (
@@ -88,7 +89,8 @@ const CostsList = () => {
             </tr>
           </thead>
           <tbody>
-            { isLoading && <span>Is Loading ...</span> }
+            { isLoading && <tr><td colSpan={100}><LoadingSpinner /></td></tr> }
+
             {
               dataReady && costs.map((cost: ICost, index: number) => (
                 <tr key={index} css={[styles.row]}>

@@ -5,6 +5,7 @@ import { action1, action2 } from "../store/actions/fooActions";
 import { startReadingData } from "../store/actions/barActions";
 import { fooStateType } from "frontend/store/reducers/fooReducer";
 import { barStateType } from "frontend/store/reducers/barReducer";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const Dashboard = () => {
       <br />
 
       { barState.isLoading && (
-        <span>Please wait ...</span>
+        <LoadingSpinner />
       )}
 
       { barState.errorMessage && (
