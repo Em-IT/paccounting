@@ -22,5 +22,13 @@ Config
 Cost List
   ✔ Create TransactionList component @done(22-01-15 10:31)
   ✔ Read transaction list @done(22-01-15 10:30)
-  ☐ Design TransactionList UI
-  ☐ Develop UI
+  ✔ Design TransactionList UI @done(22-01-27 07:54)
+  ✔ Develop UI @done(22-01-27 07:54)
+
+Header
+	☐ Add Navigation Items for desktop env
+	☐ Add user avatar
+
+Footer
+	☐ Add bottom nav items for mobile env
+	☐ Animate items in footer bar
