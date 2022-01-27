@@ -6,6 +6,7 @@ import { startReadingData } from "../store/actions/barActions";
 import { fooStateType } from "frontend/store/reducers/fooReducer";
 import { barStateType } from "frontend/store/reducers/barReducer";
 import LoadingSpinner from "../components/LoadingSpinner";
+import Header from "../components/Header";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,8 @@ const Dashboard = () => {
 
   return (
     <div>
+      <Header title="Dashboard" />
+
       <h2>Dashboard</h2>
 
       <br />
