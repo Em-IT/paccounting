@@ -28,7 +28,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Header title="Dashboard" />
+      <Header />
 
       <PageTitle>Dashboard</PageTitle>
 

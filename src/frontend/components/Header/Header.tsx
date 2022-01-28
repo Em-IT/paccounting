@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import navigationItems, { INavigationItem } from './navigationItems';
 
 interface IHeader {
-  title: string;
+  title?: string;
 }
 
 const styles = {

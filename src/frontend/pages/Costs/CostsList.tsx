@@ -31,7 +31,7 @@ const CostsList = () => {
   // TODO: separate components of 2 types of cost list
   return (
     <>
-      <Header title="Costs" />
+      <Header />
       <div tw='w-11/12 md:w-10/12 lg:w-9/12 2xl:w-8/12 mx-auto my-5'>
         <PageTitle>Costs</PageTitle>
 
