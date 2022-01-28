@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from 'app/redux/store';
-import { action1, action2 } from "../store/actions/fooActions";
-import { startReadingData } from "../store/actions/barActions";
-import { fooStateType } from "frontend/store/reducers/fooReducer";
-import { barStateType } from "frontend/store/reducers/barReducer";
+
 import LoadingSpinner from "../components/LoadingSpinner";
 import Header from "../components/Header";
+import PageTitle from "../components/PageTitle";
+
+import { action1, action2 } from "../store/actions/fooActions";
+import { startReadingData } from "../store/actions/barActions";
+import { fooStateType } from "../store/reducers/fooReducer";
+import { barStateType } from "../store/reducers/barReducer";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -27,7 +30,7 @@ const Dashboard = () => {
     <div>
       <Header title="Dashboard" />
 
-      <h2>Dashboard</h2>
+      <PageTitle>Dashboard</PageTitle>
 
       <br />
 

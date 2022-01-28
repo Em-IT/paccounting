@@ -4,6 +4,8 @@ import tw, { css } from 'twin.macro';
 
 import Header from '../../components/Header';
 import LoadingSpinner from '../../components/LoadingSpinner';
+import PageTitle from '../../components/PageTitle';
+
 import ICost from '../../types/ICost';
 import useApiCall from '../../helpers/apiTools';
 import { addCommas } from '../../helpers/formatters';
@@ -31,7 +33,7 @@ const CostsList = () => {
     <>
       <Header title="Costs" />
       <div tw='w-11/12 md:w-10/12 lg:w-9/12 2xl:w-8/12 mx-auto my-5'>
-        <h1 tw='mx-auto my-5 text-indigo-500 text-center'>Costs List</h1>
+        <PageTitle>Costs</PageTitle>
 
         <div tw=''>
 
