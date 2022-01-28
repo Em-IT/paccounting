@@ -1,7 +1,8 @@
 Main Parts of Product Frontend
   ✔ Cost List @done(22-01-15 10:30)
+	☐ Header
+	☐ Footer
 	☐ Add new Cost
-	☐ Main Layout
 	☐ Dashboard
 	☐ Sign In
 	☐ Sign Up
@@ -28,6 +29,7 @@ Cost List
 Header
 	✔ Add Navigation Items for desktop env @done(22-01-27 08:26)
 	☐ Add user avatar
+	☐ Design Logo for header
 
 Footer
 	☐ Add bottom nav items for mobile env
