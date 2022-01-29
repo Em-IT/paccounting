@@ -24,7 +24,7 @@ const CostsList = () => {
     <>
       <Header />
 
-      <div tw='w-11/12 md:w-10/12 lg:w-9/12 2xl:w-8/12 mx-auto my-5'>
+      <div tw='w-11/12 md:w-10/12 lg:w-10/12 2xl:w-9/12 mx-auto my-5'>
 
         <PageTitle>Costs</PageTitle>
 
@@ -43,14 +43,14 @@ const CostsList = () => {
           <table tw='w-full bg-white rounded-lg hidden md:block'>
             <thead>
               <tr>
-                <th>Title</th>
-                <th>Amount</th>
-                <th>Date</th>
-                <th>Primary Cat</th>
-                <th>Secondary Cat</th>
-                <th>Tags</th>
-                <th>Is Unexpected</th>
-                <th>Description</th>
+                <th style={{ minWidth: '200px' }}>Title</th>
+                <th style={{ minWidth: '130px' }}>Amount</th>
+                <th style={{ minWidth: '160px' }}>Date</th>
+                <th style={{ minWidth: '110px' }}>Primary Cat</th>
+                <th style={{ minWidth: '110px' }}>Secondary Cat</th>
+                <th style={{ minWidth: '150px' }}>Tags</th>
+                <th style={{ minWidth: '30px' }}>Is Unexpected</th>
+                <th style={{ minWidth: '200px' }}>Description</th>
               </tr>
             </thead>
             <tbody>

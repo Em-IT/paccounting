@@ -14,7 +14,7 @@ const CostTableRow = ({ cost }: CostTableRowPropType) => {
   
   const styles = {
     row: tw`text-gray-600 cursor-pointer hover:text-gray-900 hover:font-bold odd:bg-gray-100`,
-    cell: tw`p-6`,
+    cell: tw`px-2 py-6`,
     tag: tw`rounded-md bg-indigo-400 px-2 py-0.5 text-xs`,
   };
 
@@ -23,22 +23,24 @@ const CostTableRow = ({ cost }: CostTableRowPropType) => {
       <td css={[styles.cell, tw`font-bold`]}>
         {cost.title}
       </td>
-      <td css={[styles.cell]}>
+      <td css={[styles.cell, tw`text-center`]}>
         {addCommas(cost.amount)} $
       </td>
       <td css={[styles.cell]}>
         {toUKLongDate(cost.date)}
       </td>
-      <td css={[styles.cell]}>
+      <td css={[styles.cell, tw`text-center`]}>
         {cost.primaryCat.title}
       </td>
-      <td css={[styles.cell]}>
+      <td css={[styles.cell, tw`text-center`]}>
         {cost.secondaryCat.title}
       </td>
-      <td css={[styles.cell]}>
-        {cost.tags}
+      <td css={[styles.cell, tw`text-center`]}>
+        {cost.tags.map(t => (
+          <span key={t} css={[styles.tag]}>{t}</span>
+        ))}
       </td>
-      <td css={[styles.cell]}>
+      <td css={[styles.cell, tw`text-center`]}>
         {cost.isUnexpected ? '✔' : '❌'}
       </td>
       <td css={[styles.cell, tw`text-gray-700`]}>
