@@ -5,6 +5,7 @@ import tw, { css } from 'twin.macro';
 import ICost from '../../types/ICost';
 import { addCommas } from '../../helpers/formatters';
 import { toUKLongDate } from '../../helpers/dateTools';
+import cStyles from '../../CommonStyles';
 
 interface CostCardPropTypes {
   cost: ICost;
@@ -12,13 +13,12 @@ interface CostCardPropTypes {
 
 const CostCard = ({ cost }: CostCardPropTypes) => {
   const styles = {
-    card: tw`bg-white rounded-lg my-4 p-4`,
     cardRow: tw`flex flex-row justify-between`,
     tag: tw`rounded-md bg-indigo-400 px-2 py-0.5 text-xs`,
   };
 
   return (
-    <div css={[styles.card]}>
+    <div css={[cStyles.card]}>
       <div css={[styles.cardRow, tw`text-lg`]}>
         <span tw='font-bold'>
           {cost.title}
