@@ -2,7 +2,7 @@ Main Parts of Product Frontend
   ✔ Cost List @done(22-01-15 10:30)
 	✔ Header @done(22-01-30 08:24)
 	☐ Footer
-	☐ Add new Cost
+	✔ Add new Cost @done(22-01-30 09:32)
 	☐ Dashboard
 	☐ Sign In
 	☐ Sign Up
@@ -34,3 +34,8 @@ Header
 Footer
 	☐ Add bottom nav items for mobile env
 	☐ Animate items in footer bar
+
+Add new Cost
+	☐ Add all of fields
+	☐ Define save button function
+	☐ Separate two types of save buttons
