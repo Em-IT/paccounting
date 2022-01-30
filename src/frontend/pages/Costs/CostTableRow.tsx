@@ -13,7 +13,8 @@ interface CostTableRowPropType {
 const CostTableRow = ({ cost }: CostTableRowPropType) => {
   
   const styles = {
-    row: tw`text-gray-600 cursor-pointer hover:text-gray-900 hover:font-bold odd:bg-gray-100`,
+    row: tw`text-gray-600 cursor-pointer odd:bg-gray-100 transition-all duration-200
+      hover:text-gray-900 hover:font-bold hover:bg-purple-200`,
     cell: tw`px-2 py-6`,
     tag: tw`rounded-md bg-indigo-400 px-2 py-0.5 text-xs`,
   };
