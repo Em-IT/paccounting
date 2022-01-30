@@ -7,6 +7,7 @@ import GlobalStyles from './GlobalStyles';
 import { store } from './store/index';
 import Dashboard from './pages/Dashboard';
 import CostsList from './pages/Costs/CostsList';
+import AddCost from './pages/AddCost/AddCost';
 
 ReactDOM.render(
   <StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.render(
         <Switch>
           <Route exact path="/"><Dashboard /></Route>
           <Route path="/costs"><CostsList /></Route>
+          <Route path="/cost/add"><AddCost /></Route>
         </Switch>
       </Router>
     </Provider>
