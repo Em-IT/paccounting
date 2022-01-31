@@ -6,6 +6,7 @@ import Header from '../../components/Header';
 import PageTitle from '../../components/PageTitle';
 
 import cStyles from '../../CommonStyles';
+// import useApiCall from '../../helpers/apiTools';
 
 export const AddCost = () => {
   const [title, setTitle] = useState('');
@@ -19,6 +20,10 @@ export const AddCost = () => {
   //   form: tw`bg-white rounded-lg my-4 p-4`,
   // };
 
+  const saveCost = () => {
+    console.log('save');
+  };
+
   return (
     <div>
       <Header />
@@ -27,28 +32,34 @@ export const AddCost = () => {
 
         <PageTitle>Add new Cost</PageTitle>
 
-        <form css={cStyles.card}>
-          <div>
+        <form css={cStyles.card} onSubmit={(e) => e.preventDefault()}>
+          <div css={cStyles.field}>
             <label css={cStyles.label}>Title</label>
-            <input type="text" value={title} onChange={e => setTitle(e.target.value)} />
+            <input type="text" css={cStyles.input}
+              value={title} onChange={e => setTitle(e.target.value)} />
           </div>
 
-          <div>
+          <div css={cStyles.field}>
             <label css={cStyles.label}>Amount</label>
-            <input type="number" value={amount} onChange={e => setAmount(e.target.value)} />
+            <input type="number" css={cStyles.input}
+              value={amount} onChange={e => setAmount(e.target.value)} />
           </div>
 
-          <div>
+          <div css={cStyles.field}>
             <label css={cStyles.label}>Date</label>
-            <input type="date" value={date} onChange={e => setDate(e.target.value)} />
+            <input type="date" css={cStyles.input}
+              value={date} onChange={e => setDate(e.target.value)} />
           </div>
 
-          <div>
+          <div css={cStyles.field}>
             <label css={cStyles.label}>Description</label>
-            <input type="text" value={description} onChange={e => setDescription(e.target.value)} />
+            <input type="text" css={cStyles.input}
+              value={description} onChange={e => setDescription(e.target.value)} />
           </div>
 
-          <button css={[cStyles.btn, cStyles.primaryBtn]}>Save</button>
+          <button css={[cStyles.btn, cStyles.primaryBtn]} onClick={saveCost}>
+            Save
+          </button>
         </form>
 
       </div>
