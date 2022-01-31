@@ -17,7 +17,7 @@ ReactDOM.render(
         <Switch>
           <Route exact path="/"><Dashboard /></Route>
           <Route path="/costs"><CostsList /></Route>
-          <Route path="/cost/add"><AddCost /></Route>
+          <Route path="/add-cost"><AddCost /></Route>
         </Switch>
       </Router>
     </Provider>
