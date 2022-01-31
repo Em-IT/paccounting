@@ -19,7 +19,9 @@ export interface ICapsule<Type> {
 
 // TODO: Define the headers array type
 const useApiCall = <Type>(apiName: string,
-  customHeaders?: AxiosRequestHeaders): ICapsule<Type> => {
+  customBody?: any, customHeaders?: AxiosRequestHeaders,
+  isPost?: boolean): ICapsule<Type> => {
+
   const [isLoading, setIsLoading] = useState(true);
   const [isArray, setIsArray] = useState(true);
   const [data, setData] = useState<Type>();
@@ -30,21 +32,32 @@ const useApiCall = <Type>(apiName: string,
   );
 
   useEffect(() => {
-    fetchData();
+    callApi();
   }, []);
 
-  const fetchData = async () => {
+  const callApi = async () => {
     setIsLoading(true);
 
     try {
 
-      const result = await axios.get(apiBaseUrl + apiName, {
-        headers: {
-          'content-type': 'text/json',
-          ...customHeaders,
-        },
-      });
-      // console.log('fetched data=', result);
+      let result;
+
+      if (isPost || (isPost === undefined && customBody)) {
+        result = await axios.post(apiBaseUrl + apiName, customBody, {
+          headers: {
+            'content-type': 'text/json',
+            ...customHeaders,
+          },
+        });
+      } else {
+        result = await axios.get(apiBaseUrl + apiName, {
+          headers: {
+            'content-type': 'text/json',
+            ...customHeaders,
+          },
+        });
+      }
+      console.log('fetched data=', result);
 
       if (result?.data?.isSuccessful) {
 
@@ -52,15 +65,15 @@ const useApiCall = <Type>(apiName: string,
           setDataArray(result.data.data);
           setIsArray(true);
         } else {
-          setData(result.data.data);
+          setData(result?.data?.data);
           setIsArray(false);
         }
-
         setErrorMessage('');
+
       } else {
         setData(undefined);
         setDataArray([]);
-        setErrorMessage(result.data.errorMessage);
+        setErrorMessage(result?.data?.errorMessage);
       }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
