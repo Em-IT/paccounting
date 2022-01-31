@@ -16,6 +16,7 @@ const CostsList = () => {
   const { dataArray: costs, dataReady, isLoading, errorMessage } = 
   useApiCall<ICost>(
     '/my-costs',
+    null,
     { 'userId': '61e08a74927d9e1bc3cfbe79' },
   );
 
