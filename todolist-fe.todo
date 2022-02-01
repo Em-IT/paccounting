@@ -3,6 +3,7 @@ Main Parts of Product Frontend
 	✔ Header @done(22-01-30 08:24)
 	☐ Footer
 	✔ Add new Cost @done(22-01-30 09:32)
+	☐ Alert component
 	☐ 404 Page
 	☐ Dashboard
 	☐ Sign In
@@ -37,6 +38,10 @@ Footer
 	☐ Animate items in footer bar
 
 Add new Cost
+	✔ Define save button function @done(22-02-01 12:46)
 	☐ Add all of fields
-	☐ Define save button function
 	☐ Separate two types of save buttons
+	☐ Redirect after save
+	☐ Show error message in an alert
+	☐ Disable fields during save
+	☐ Show Loading spinner on the fields or instead of fields
