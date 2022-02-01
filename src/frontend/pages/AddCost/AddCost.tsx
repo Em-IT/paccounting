@@ -4,9 +4,10 @@ import tw, { css } from 'twin.macro';
 
 import Header from '../../components/Header';
 import PageTitle from '../../components/PageTitle';
+import LoadingSpinner from '../../components/LoadingSpinner';
 
 import cStyles from '../../CommonStyles';
-// import useApiCall from '../../helpers/apiTools';
+import { useManualApi } from '../../helpers/apiTools';
 
 export const AddCost = () => {
   const [title, setTitle] = useState('');
@@ -16,12 +17,38 @@ export const AddCost = () => {
   // const [secondaryCatId, setSecondaryCatId] = useState('');
   const [description, setDescription] = useState('');
 
+  const { callApi, data, dataReady, isLoading, errorMessage } = 
+    useManualApi<string>(
+      '/cost',
+      {
+        title,
+        amount,
+        date,
+        description,
+        isUnexpected: false,
+        primaryCat: {
+          id: '61e08a74927d9e1bc3cfbe86',
+          title: 'Food',
+        },
+        secondaryCat: {
+          id: '61e08a74927d9e1bc3cfbe87',
+          title: 'Groceries',
+        },
+        // isIncome: false,
+        userId: '61e08a74927d9e1bc3cfbe79',
+      },
+      { 'userId': '61e08a74927d9e1bc3cfbe79' },
+    );
+  console.log('data=', data, dataReady, isLoading, errorMessage);
+
   // const styles = {
   //   form: tw`bg-white rounded-lg my-4 p-4`,
   // };
 
   const saveCost = () => {
     console.log('save');
+
+    callApi();
   };
 
   return (
@@ -33,6 +60,11 @@ export const AddCost = () => {
         <PageTitle>Add new Cost</PageTitle>
 
         <form css={cStyles.card} onSubmit={(e) => e.preventDefault()}>
+
+          {isLoading && <LoadingSpinner />}
+
+          {!isLoading && errorMessage && <span>Error: {errorMessage}</span>}
+
           <div css={cStyles.field}>
             <label css={cStyles.label}>Title</label>
             <input type="text" css={cStyles.input}
