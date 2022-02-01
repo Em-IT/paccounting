@@ -9,12 +9,12 @@ import LoadingSpinner from '../../components/LoadingSpinner';
 import PageTitle from '../../components/PageTitle';
 
 import ICost from '../../types/ICost';
-import useApiCall from '../../helpers/apiTools';
+import useAutoApi from '../../helpers/apiTools';
 
 const CostsList = () => {
 
   const { dataArray: costs, dataReady, isLoading, errorMessage } = 
-  useApiCall<ICost>(
+  useAutoApi<ICost>(
     '/my-costs',
     null,
     { 'userId': '61e08a74927d9e1bc3cfbe79' },
