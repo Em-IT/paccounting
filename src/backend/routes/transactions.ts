@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import { body } from 'express-validator';
 import { ObjectId } from 'mongodb';
 
 import {
@@ -34,11 +35,18 @@ router.get('/my-costs',
   },
 );
 
-router.post('/transaction', async (req: Request, res: Response) => {
+router.post('/cost', [
+
+  body('date').default(new Date()),
+  body('isIncome').default(false),
+
+], async (req: Request, res: Response) => {
   logApi('Add User Transaction');
 
   try {
     const transaction = req.body;
+    /* const userId: string = (Array.isArray(req.headers.userId) ?
+      req.headers.userId[0] : req.headers.userId) || '';*/
     /*
      * const userId = parseInt(req.params.userId);
      * if(!userId)
