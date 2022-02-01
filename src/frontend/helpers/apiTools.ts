@@ -9,7 +9,7 @@ import apiBaseUrl from "../apiUrl";
   // customHeaders?: Array<any>;
 }*/
 
-export interface ICapsule<Type> {
+export interface IGetCapsule<Type> {
   data: Type | undefined;
   dataArray: Array<Type>;
   dataReady: boolean;
@@ -18,9 +18,9 @@ export interface ICapsule<Type> {
 }
 
 // TODO: Define the headers array type
-const useApiCall = <Type>(apiName: string,
+const useAutoApi = <Type>(apiName: string,
   customBody?: any, customHeaders?: AxiosRequestHeaders,
-  isPost?: boolean): ICapsule<Type> => {
+  isPost?: boolean): IGetCapsule<Type> => {
 
   const [isLoading, setIsLoading] = useState(true);
   const [isArray, setIsArray] = useState(true);
@@ -88,4 +88,69 @@ const useApiCall = <Type>(apiName: string,
   return { data, dataArray, dataReady, isLoading, errorMessage };
 };
 
-export default useApiCall;
+export interface ISendCapsule<Type> extends IGetCapsule<Type> {
+  callApi: () => void;
+}
+
+export const useManualApi = <Type>(apiName: string,
+  customBody?: any, customHeaders?: AxiosRequestHeaders,
+  isPost?: boolean): ISendCapsule<Type> => {
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [isArray, setIsArray] = useState(true);
+  const [data, setData] = useState<Type>();
+  const [dataArray, setDataArray] = useState<Array<Type>>([]);
+  const [errorMessage, setErrorMessage] = useState('');
+  const dataReady = !isLoading && !errorMessage && (
+    data !== undefined || (isArray && dataArray.length > 0)
+  );
+
+  const callApi = async () => {
+    setIsLoading(true);
+
+    try {
+
+      let result;
+
+      if (isPost || (isPost === undefined && customBody)) {
+        result = await axios.post(apiBaseUrl + apiName, customBody);
+      } else {
+        result = await axios.get(apiBaseUrl + apiName, {
+          headers: {
+            'content-type': 'text/json',
+            ...customHeaders,
+          },
+        });
+      }
+      console.log('fetched data=', result);
+
+      if (result?.data?.isSuccessful) {
+
+        if (Array.isArray(result.data.data)) {
+          setDataArray(result.data.data);
+          setIsArray(true);
+        } else {
+          setData(result?.data?.data);
+          setIsArray(false);
+        }
+        setErrorMessage('');
+
+      } else {
+        setData(undefined);
+        setDataArray([]);
+        setErrorMessage(result?.data?.errorMessage);
+      }
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      setErrorMessage(error.toString());
+    }
+
+    setIsLoading(false);
+  };
+
+  // return { data: (data || dataArray), dataReady, isLoading, errorMessage };
+  return { callApi, data, dataArray, dataReady, isLoading, errorMessage };
+};
+
+export default useAutoApi;
