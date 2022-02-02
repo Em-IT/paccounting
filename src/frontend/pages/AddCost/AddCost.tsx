@@ -70,9 +70,7 @@ export const AddCost = () => {
 
         <form css={[cStyles.card, tw`relative`]} onSubmit={(e) => e.preventDefault()}>
 
-          { !isLoading && <LoadingSpinner style={{
-            backgroundColor: 'rgba(255, 255, 255, 0.8)',
-            position: 'absolute',
+          { !isLoading && <LoadingSpinner isCover style={{
             margin: '-1rem',
             borderRadius: '0.5rem',
           }} />}
