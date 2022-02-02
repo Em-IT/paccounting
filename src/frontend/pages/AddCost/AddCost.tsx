@@ -8,6 +8,7 @@ import LoadingSpinner from '../../components/LoadingSpinner';
 
 import cStyles from '../../CommonStyles';
 import { useManualApi } from '../../helpers/apiTools';
+// import { Redirect } from 'react-router-dom';
 
 export const AddCost = () => {
   const [title, setTitle] = useState('');
@@ -50,6 +51,14 @@ export const AddCost = () => {
 
     callApi();
   };
+
+  if (dataReady) {
+    setTimeout(() => {
+      // history.push("/home");
+      location.href = '/costs';
+      // return <Redirect to='/my-costs'/>;
+    }, 2000);
+  }
 
   return (
     <div>
