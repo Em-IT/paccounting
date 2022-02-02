@@ -39,9 +39,9 @@ Footer
 
 Add new Cost
 	✔ Define save button function @done(22-02-01 12:46)
+	✔ Redirect after save @done(22-02-02 16:53)
+	✔ Disable fields during save @done(22-02-03 00:20)
+	✔ Show Loading spinner on the fields or instead of fields @done(22-02-03 00:20)
 	☐ Add all of fields
 	☐ Separate two types of save buttons
-	☐ Redirect after save
 	☐ Show error message in an alert
-	☐ Disable fields during save
-	☐ Show Loading spinner on the fields or instead of fields
