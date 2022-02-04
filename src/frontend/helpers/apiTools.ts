@@ -112,6 +112,7 @@ export const useManualApi = <Type>(apiName: string,
 
       let result;
 
+      // TODO: send header data using post method
       if (isPost || (isPost === undefined && customBody)) {
         result = await axios.post(apiBaseUrl + apiName, customBody);
       } else {
@@ -122,7 +123,7 @@ export const useManualApi = <Type>(apiName: string,
           },
         });
       }
-      console.log('fetched data=', result);
+      // console.log('fetched data=', result);
 
       if (result?.data?.isSuccessful) {
 
@@ -143,7 +144,9 @@ export const useManualApi = <Type>(apiName: string,
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      setErrorMessage(error.toString());
+      setData(undefined);
+      setDataArray([]);
+      setErrorMessage(error.response.data.errorMessage || error.toString());
     }
 
     setIsLoading(false);
