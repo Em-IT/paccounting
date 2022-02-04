@@ -72,44 +72,42 @@ export const AddCost = () => {
 
         <form css={[cStyles.card, tw`relative`]} onSubmit={(e) => e.preventDefault()}>
 
-          { !isLoading && <LoadingSpinner isCover style={{
+          { isLoading && <LoadingSpinner isCover style={{
             margin: '-1rem',
             borderRadius: '0.5rem',
           }} />}
 
           {!isLoading && errorMessage && <span>Error: {errorMessage}</span>}
 
-          { !isLoading && (
-            <>
-              <div css={cStyles.field}>
-                <label css={cStyles.label}>Title</label>
-                <input type="text" css={cStyles.input}
-                  value={title} onChange={e => setTitle(e.target.value)} />
-              </div>
+          <div>
+            <div css={cStyles.field}>
+              <label css={cStyles.label}>Title</label>
+              <input type="text" css={cStyles.input}
+                value={title} onChange={e => setTitle(e.target.value)} />
+            </div>
 
-              <div css={cStyles.field}>
-                <label css={cStyles.label}>Amount</label>
-                <input type="number" css={cStyles.input}
-                  value={amount} onChange={e => setAmount(e.target.value)} />
-              </div>
+            <div css={cStyles.field}>
+              <label css={cStyles.label}>Amount</label>
+              <input type="number" css={cStyles.input}
+                value={amount} onChange={e => setAmount(e.target.value)} />
+            </div>
 
-              <div css={cStyles.field}>
-                <label css={cStyles.label}>Date</label>
-                <input type="date" css={cStyles.input}
-                  value={date} onChange={e => setDate(e.target.value)} />
-              </div>
+            <div css={cStyles.field}>
+              <label css={cStyles.label}>Date</label>
+              <input type="date" css={cStyles.input}
+                value={date} onChange={e => setDate(e.target.value)} />
+            </div>
 
-              <div css={cStyles.field}>
-                <label css={cStyles.label}>Description</label>
-                <input type="text" css={cStyles.input}
-                  value={description} onChange={e => setDescription(e.target.value)} />
-              </div>
+            <div css={cStyles.field}>
+              <label css={cStyles.label}>Description</label>
+              <input type="text" css={cStyles.input}
+                value={description} onChange={e => setDescription(e.target.value)} />
+            </div>
 
-              <button css={[cStyles.btn, cStyles.primaryBtn]} onClick={saveCost}>
-                Save
-              </button>
-            </>
-          )}
+            <button css={[cStyles.btn, cStyles.primaryBtn]} onClick={saveCost}>
+              Save
+            </button>
+          </div>
         </form>
 
       </div>
