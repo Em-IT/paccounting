@@ -1,9 +1,9 @@
 Main Parts of Product Frontend
   ✔ Cost List @done(22-01-15 10:30)
 	✔ Header @done(22-01-30 08:24)
-	☐ Footer
 	✔ Add new Cost @done(22-01-30 09:32)
-	☐ Alert component
+	✔ Alert component @done(22-02-05 00:27)
+	☐ Footer
 	☐ 404 Page
 	☐ Dashboard
 	☐ Sign In
@@ -42,6 +42,7 @@ Add new Cost
 	✔ Redirect after save @done(22-02-02 16:53)
 	✔ Disable fields during save @done(22-02-03 00:20)
 	✔ Show Loading spinner on the fields or instead of fields @done(22-02-03 00:20)
+	✔ Show error message in an alert @done(22-02-05 00:27)
 	☐ Add all of fields
 	☐ Separate two types of save buttons
-	☐ Show error message in an alert
+	☐ Show only 1 toast on error or success
