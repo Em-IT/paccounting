@@ -41,14 +41,14 @@ export const AddCost = () => {
       },
       { 'userId': '61e08a74927d9e1bc3cfbe79' },
     );
-  console.log('data=', data, dataReady, isLoading, errorMessage);
+  // console.log('data=', data, dataReady, isLoading, errorMessage);
 
   // const styles = {
   //   form: tw`bg-white rounded-lg my-4 p-4`,
   // };
 
   const saveCost = () => {
-    console.log('save');
+    // console.log('save');
 
     callApi();
   };
@@ -60,6 +60,8 @@ export const AddCost = () => {
       location.href = '/costs';
       // return <Redirect to='/my-costs'/>;
     }, 3000);
+  } else if (errorMessage) {
+    toast.error("Error in save process: " + errorMessage);
   }
 
   return (
@@ -76,8 +78,6 @@ export const AddCost = () => {
             margin: '-1rem',
             borderRadius: '0.5rem',
           }} />}
-
-          {!isLoading && errorMessage && <span>Error: {errorMessage}</span>}
 
           <div>
             <div css={cStyles.field}>
