@@ -13,6 +13,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx'],
+    // alias: {
+    //   '~': path.resolve(__dirname, './node_modules'),
+    //   // '~': path.resolve('./node_modules'),
+    // },
   },
   devServer: {
     historyApiFallback: true,
@@ -42,6 +46,12 @@ module.exports = {
       {
         test: /\.css$/i,
         include: path.resolve(__dirname, 'src'),
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
+      },
+      {
+        test: /\.css$/i,
+        include: path.resolve(__dirname, './node_modules'),
+        // include: path.resolve(__dirname, './node_modules/react-toastify/dist/ReactToastify.css'),
         use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
     ],
