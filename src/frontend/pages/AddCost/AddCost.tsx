@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import tw, { css } from 'twin.macro';
+import { toast } from 'react-toastify';
 
 import Header from '../../components/Header';
 import PageTitle from '../../components/PageTitle';
@@ -53,11 +54,12 @@ export const AddCost = () => {
   };
 
   if (dataReady) {
+    toast.success("The cost saved successfully 👍");
     setTimeout(() => {
       // history.push("/home");
       location.href = '/costs';
       // return <Redirect to='/my-costs'/>;
-    }, 2000);
+    }, 3000);
   }
 
   return (
