@@ -27,6 +27,10 @@ Cost List
   ✔ Read transaction list @done(22-01-15 10:30)
   ✔ Design TransactionList UI @done(22-01-27 07:54)
   ✔ Develop UI @done(22-01-27 07:54)
+	☐ Add edit button
+	☐ Add delete button
+	☐ Add search ability
+	☐ Add date explorer
 
 Header
 	✔ Add Navigation Items for desktop env @done(22-01-27 08:26)
@@ -43,6 +47,6 @@ Add new Cost
 	✔ Disable fields during save @done(22-02-03 00:20)
 	✔ Show Loading spinner on the fields or instead of fields @done(22-02-03 00:20)
 	✔ Show error message in an alert @done(22-02-05 00:27)
+	✔ Show only 1 toast on error or success @done(22-02-07 08:22)
 	☐ Add all of fields
 	☐ Separate two types of save buttons
-	☐ Show only 1 toast on error or success
