@@ -18,6 +18,7 @@ export interface IGetCapsule<Type> {
 }
 
 // TODO: Define the headers array type
+// TODO: remove default export
 const useAutoApi = <Type>(apiName: string,
   customBody?: any, customHeaders?: AxiosRequestHeaders,
   isPost?: boolean): IGetCapsule<Type> => {
@@ -88,24 +89,24 @@ const useAutoApi = <Type>(apiName: string,
   return { data, dataArray, dataReady, isLoading, errorMessage };
 };
 
-export interface ISendCapsule<Type> extends IGetCapsule<Type> {
-  callApi: () => void;
+export interface IFinalSendCapsule<Type> {
+  data: Type | undefined;
+  errorMessage: string;
+}
+
+export interface IInitSendCapsule<Type> {
+  isLoading: boolean;
+  callApi: () => Promise<IFinalSendCapsule<Type>>;
 }
 
 export const useManualApi = <Type>(apiName: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   customBody?: any, customHeaders?: AxiosRequestHeaders,
-  isPost?: boolean): ISendCapsule<Type> => {
+  isPost?: boolean): IInitSendCapsule<Type> => {
 
   const [isLoading, setIsLoading] = useState(false);
-  const [isArray, setIsArray] = useState(true);
-  const [data, setData] = useState<Type>();
-  const [dataArray, setDataArray] = useState<Array<Type>>([]);
-  const [errorMessage, setErrorMessage] = useState('');
-  const dataReady = !isLoading && !errorMessage && (
-    data !== undefined || (isArray && dataArray.length > 0)
-  );
 
-  const callApi = async () => {
+  const callApi = async (): Promise<IFinalSendCapsule<Type>> => {
     setIsLoading(true);
 
     try {
@@ -125,35 +126,33 @@ export const useManualApi = <Type>(apiName: string,
       }
       // console.log('fetched data=', result);
 
+      setIsLoading(false);
+
       if (result?.data?.isSuccessful) {
-
-        if (Array.isArray(result.data.data)) {
-          setDataArray(result.data.data);
-          setIsArray(true);
-        } else {
-          setData(result?.data?.data);
-          setIsArray(false);
-        }
-        setErrorMessage('');
-
+        return {
+          data: result?.data?.data,
+          errorMessage: '',
+        };
       } else {
-        setData(undefined);
-        setDataArray([]);
-        setErrorMessage(result?.data?.errorMessage);
+        return {
+          data: undefined,
+          errorMessage: result?.data?.errorMessage,
+        };
       }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      setData(undefined);
-      setDataArray([]);
-      setErrorMessage(error.response.data.errorMessage || error.toString());
+
+      setIsLoading(false);
+      return {
+        data: undefined,
+        errorMessage: error.response.data.errorMessage || error.toString(),
+      };
     }
 
-    setIsLoading(false);
   };
 
-  // return { data: (data || dataArray), dataReady, isLoading, errorMessage };
-  return { callApi, data, dataArray, dataReady, isLoading, errorMessage };
+  return { isLoading, callApi };
 };
 
 export default useAutoApi;

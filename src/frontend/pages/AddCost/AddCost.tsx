@@ -19,50 +19,48 @@ export const AddCost = () => {
   // const [secondaryCatId, setSecondaryCatId] = useState('');
   const [description, setDescription] = useState('');
 
-  const { callApi, data, dataReady, isLoading, errorMessage } = 
-    useManualApi<string>(
-      '/cost',
-      {
-        title,
-        amount,
-        date,
-        description,
-        isUnexpected: false,
-        primaryCat: {
-          id: '61e08a74927d9e1bc3cfbe86',
-          title: 'Food',
-        },
-        secondaryCat: {
-          id: '61e08a74927d9e1bc3cfbe87',
-          title: 'Groceries',
-        },
-        // isIncome: false,
-        userId: '61e08a74927d9e1bc3cfbe79',
+  const { isLoading, callApi } = useManualApi<string>('/cost',
+    {
+      title,
+      amount,
+      date,
+      description,
+      isUnexpected: false,
+      primaryCat: {
+        id: '61e08a74927d9e1bc3cfbe86',
+        title: 'Food',
       },
-      { 'userId': '61e08a74927d9e1bc3cfbe79' },
-    );
+      secondaryCat: {
+        id: '61e08a74927d9e1bc3cfbe87',
+        title: 'Groceries',
+      },
+      // isIncome: false,
+      userId: '61e08a74927d9e1bc3cfbe79',
+    },
+    { 'userId': '61e08a74927d9e1bc3cfbe79' },
+  );
   // console.log('data=', data, dataReady, isLoading, errorMessage);
 
   // const styles = {
   //   form: tw`bg-white rounded-lg my-4 p-4`,
   // };
 
-  const saveCost = () => {
+  const saveCost = async () => {
     // console.log('save');
 
-    callApi();
+    const { data, errorMessage } = await callApi();
+    if (data) {
+      // TODO: redirect after toast finish
+      toast.success("The cost saved successfully 👍");
+      setTimeout(() => {
+        // history.push("/home");
+        location.href = '/costs';
+        // return <Redirect to='/my-costs'/>;
+      }, 3000);
+    } else if (errorMessage) {
+      toast.error("Error in save process: " + errorMessage);
+    }
   };
-
-  if (dataReady) {
-    toast.success("The cost saved successfully 👍");
-    setTimeout(() => {
-      // history.push("/home");
-      location.href = '/costs';
-      // return <Redirect to='/my-costs'/>;
-    }, 3000);
-  } else if (errorMessage) {
-    toast.error("Error in save process: " + errorMessage);
-  }
 
   return (
     <div>
