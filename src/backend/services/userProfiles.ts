@@ -14,3 +14,8 @@ export const readAllUsers = async () => {
   const result = await UserProfile.find();
   return result;
 };
+
+export const readMe = async (userId: string) => {
+  const result = await UserProfile.findById(userId);
+  return result;
+};

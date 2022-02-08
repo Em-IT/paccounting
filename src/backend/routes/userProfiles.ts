@@ -1,11 +1,11 @@
 /* eslint-disable newline-per-chained-call */
 import express, { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { body } from 'express-validator';
+import { body, header } from 'express-validator';
 
 import { capsulateData } from '../helpers/apiTools';
 import { logApi } from './../helpers/logTools';
-import { addUser, findUserByUsername, readAllUsers }
+import { addUser, findUserByUsername, readAllUsers, readMe }
   from '../services/userProfiles';
 import { processedValidationResult } from './../helpers/validationTools';
 import { IUserProfile } from './../models/UserProfile';
@@ -74,5 +74,27 @@ router.get('/users', async (_req: Request, res: Response) => {
     .status(StatusCodes.OK)
     .json(capsulateData(result));
 });
+
+router.get('/me',
+  header('userid', "UserId in header is required").exists(),
+  async (req: Request, res: Response) => {
+    logApi('Read my User Info');
+
+    try {
+      const userId: string = (Array.isArray(req.headers.userid) ?
+        req.headers.userid[0] : req.headers.userid) || '';
+      console.log('userID = ', userId);
+
+      const result = await readMe(userId);
+      return res
+        .status(StatusCodes.OK)
+        .json(capsulateData(result));
+
+    } catch (error) {
+      return res
+        .status(StatusCodes.INTERNAL_SERVER_ERROR)
+        .json(capsulateData(null, error));
+    }
+  });
 
 export default router;
