@@ -9,7 +9,7 @@ import LoadingSpinner from '../../components/LoadingSpinner';
 import PageTitle from '../../components/PageTitle';
 
 import ICost from '../../types/ICost';
-import useAutoApi from '../../helpers/apiTools';
+import { useAutoApi } from '../../helpers/apiTools';
 
 const CostsList = () => {
 

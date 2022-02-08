@@ -18,8 +18,7 @@ export interface IGetCapsule<Type> {
 }
 
 // TODO: Define the headers array type
-// TODO: remove default export
-const useAutoApi = <Type>(apiName: string,
+export const useAutoApi = <Type>(apiName: string,
   customBody?: any, customHeaders?: AxiosRequestHeaders,
   isPost?: boolean): IGetCapsule<Type> => {
 
@@ -154,5 +153,3 @@ export const useManualApi = <Type>(apiName: string,
 
   return { isLoading, callApi };
 };
-
-export default useAutoApi;
