@@ -3,6 +3,7 @@ Main Parts of Product Frontend
 	✔ Header @done(22-01-30 08:24)
 	✔ Add new Cost @done(22-01-30 09:32)
 	✔ Alert component @done(22-02-05 00:27)
+	☐ Field component
 	☐ Footer
 	☐ 404 Page
 	☐ Dashboard
@@ -48,5 +49,6 @@ Add new Cost
 	✔ Show Loading spinner on the fields or instead of fields @done(22-02-03 00:20)
 	✔ Show error message in an alert @done(22-02-05 00:27)
 	✔ Show only 1 toast on error or success @done(22-02-07 08:22)
-	☐ Add all of fields
+	✔ Add all of fields @done(22-02-08 17:24)
+	☐ Dynamically place all secondary categories
 	☐ Separate two types of save buttons
