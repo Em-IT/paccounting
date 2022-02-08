@@ -8,7 +8,7 @@ import PageTitle from '../../components/PageTitle';
 import LoadingSpinner from '../../components/LoadingSpinner';
 
 import cStyles from '../../CommonStyles';
-import { useManualApi } from '../../helpers/apiTools';
+import { useAutoApi, useManualApi } from '../../helpers/apiTools';
 // import { Redirect } from 'react-router-dom';
 
 export const AddCost = () => {
@@ -20,6 +20,24 @@ export const AddCost = () => {
   // const [secondaryCatId, setSecondaryCatId] = useState('');
   const [description, setDescription] = useState('');
 
+  const [primaryCats, setPrimaryCats] = useState([]);
+
+  const { data: me, dataReady, isLoading: meIsLoading, errorMessage } = 
+  useAutoApi<any>(
+    '/me',
+    null,
+    { 'userId': '61e08a74927d9e1bc3cfbe79' },
+  );
+
+  React.useEffect(() => {
+    if (dataReady) {
+      setPrimaryCats(me.categories);
+    } else if (errorMessage) {
+      toast.error(errorMessage);
+    }
+
+  }, [dataReady]);
+ 
   const { isLoading, callApi } = useManualApi<string>('/cost',
     {
       title,
@@ -73,7 +91,7 @@ export const AddCost = () => {
 
         <form css={[cStyles.card, tw`relative`]} onSubmit={(e) => e.preventDefault()}>
 
-          { isLoading && <LoadingSpinner isCover style={{
+          { (isLoading || meIsLoading) && <LoadingSpinner isCover style={{
             margin: '-1rem',
             borderRadius: '0.5rem',
           }} />}
@@ -99,9 +117,22 @@ export const AddCost = () => {
 
             <div css={cStyles.field}>
               <label css={cStyles.label}>Is Unexpected</label>
-              <input type="checkbox" css={cStyles.input}
-                checked={isUnexpected}
-                onChange={e => setIsUnexpected(e.target.checked)} />
+              <div  css={cStyles.input}>
+                <input type="checkbox"
+                  checked={isUnexpected}
+                  onChange={e => setIsUnexpected(e.target.checked)} />
+              </div>
+            </div>
+
+            <div css={cStyles.field}>
+              <label css={cStyles.label}>Main Categories</label>
+              <select css={cStyles.input}>
+                {
+                  primaryCats.map((cat: any, index: number) => (
+                    <option key={index}>{cat.title}</option>
+                  ))
+                }
+              </select>
             </div>
 
             <div css={cStyles.field}>
