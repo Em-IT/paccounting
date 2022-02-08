@@ -15,6 +15,7 @@ export const AddCost = () => {
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
+  const [isUnexpected, setIsUnexpected] = useState(false);
   // const [primaryCatId, setPrimaryCatId] = useState('');
   // const [secondaryCatId, setSecondaryCatId] = useState('');
   const [description, setDescription] = useState('');
@@ -25,7 +26,7 @@ export const AddCost = () => {
       amount,
       date,
       description,
-      isUnexpected: false,
+      isUnexpected,
       primaryCat: {
         id: '61e08a74927d9e1bc3cfbe86',
         title: 'Food',
@@ -34,7 +35,6 @@ export const AddCost = () => {
         id: '61e08a74927d9e1bc3cfbe87',
         title: 'Groceries',
       },
-      // isIncome: false,
       userId: '61e08a74927d9e1bc3cfbe79',
     },
     { 'userId': '61e08a74927d9e1bc3cfbe79' },
@@ -95,6 +95,13 @@ export const AddCost = () => {
               <label css={cStyles.label}>Date</label>
               <input type="date" css={cStyles.input}
                 value={date} onChange={e => setDate(e.target.value)} />
+            </div>
+
+            <div css={cStyles.field}>
+              <label css={cStyles.label}>Is Unexpected</label>
+              <input type="checkbox" css={cStyles.input}
+                checked={isUnexpected}
+                onChange={e => setIsUnexpected(e.target.checked)} />
             </div>
 
             <div css={cStyles.field}>
