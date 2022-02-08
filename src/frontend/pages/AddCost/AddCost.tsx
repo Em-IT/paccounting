@@ -49,14 +49,15 @@ export const AddCost = () => {
     // console.log('save');
 
     const { data, errorMessage } = await callApi();
+    
     if (data) {
-      // TODO: redirect after toast finish
-      toast.success("The cost saved successfully 👍");
-      setTimeout(() => {
-        // history.push("/home");
-        location.href = '/costs';
-        // return <Redirect to='/my-costs'/>;
-      }, 3000);
+      toast.success("The cost saved successfully 👍", {
+        onClose: () => {
+          location.href = '/costs';
+          // history.push("/home");
+          // return <Redirect to='/my-costs'/>;
+        },
+      });
     } else if (errorMessage) {
       toast.error("Error in save process: " + errorMessage);
     }
