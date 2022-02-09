@@ -21,6 +21,7 @@ export const AddCost = () => {
   const [description, setDescription] = useState('');
 
   const [primaryCats, setPrimaryCats] = useState([]);
+  const [secondaryCats, setSecondaryCats] = useState([]);  
 
   const { data: me, dataReady, isLoading: meIsLoading, errorMessage } = 
   useAutoApi<any>(
@@ -81,6 +82,10 @@ export const AddCost = () => {
     }
   };
 
+  const handleCatChange = (e: any) => {
+    console.log(e.target.value);
+  };
+
   return (
     <div>
       <Header />
@@ -125,10 +130,21 @@ export const AddCost = () => {
             </div>
 
             <div css={cStyles.field}>
-              <label css={cStyles.label}>Main Categories</label>
-              <select css={cStyles.input}>
+              <label css={cStyles.label}>Primary Categories</label>
+              <select css={cStyles.input} onChange={handleCatChange}>
                 {
                   primaryCats.map((cat: any, index: number) => (
+                    <option key={index} value={cat.id}>{cat.title}</option>
+                  ))
+                }
+              </select>
+            </div>
+
+            <div css={cStyles.field}>
+              <label css={cStyles.label}>Secondary Categories</label>
+              <select css={cStyles.input}>
+                {
+                  secondaryCats.map((cat: any, index: number) => (
                     <option key={index}>{cat.title}</option>
                   ))
                 }
