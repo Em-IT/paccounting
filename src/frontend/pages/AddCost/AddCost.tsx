@@ -33,6 +33,7 @@ export const AddCost = () => {
   React.useEffect(() => {
     if (dataReady) {
       setPrimaryCats(me.categories);
+      setSecondaryCats(me.categories[0].subCategories);
     } else if (errorMessage) {
       toast.error(errorMessage);
     }
@@ -84,6 +85,8 @@ export const AddCost = () => {
 
   const handleCatChange = (e: any) => {
     console.log(e.target.value);
+    const sc: any = primaryCats.find((c: any) => c._id === e.target.value);
+    setSecondaryCats(sc.subCategories);
   };
 
   return (
@@ -134,7 +137,7 @@ export const AddCost = () => {
               <select css={cStyles.input} onChange={handleCatChange}>
                 {
                   primaryCats.map((cat: any, index: number) => (
-                    <option key={index} value={cat.id}>{cat.title}</option>
+                    <option key={index} value={cat._id}>{cat.title}</option>
                   ))
                 }
               </select>
