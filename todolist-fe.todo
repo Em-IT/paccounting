@@ -28,6 +28,8 @@ Cost List
   ✔ Read transaction list @done(22-01-15 10:30)
   ✔ Design TransactionList UI @done(22-01-27 07:54)
   ✔ Develop UI @done(22-01-27 07:54)
+	☐ Sort the result by date
+	☐ Add a pagination component
 	☐ Add edit button
 	☐ Add delete button
 	☐ Add search ability
@@ -52,3 +54,4 @@ Add new Cost
 	✔ Add all of fields @done(22-02-08 17:24)
 	✔ Dynamically place all secondary categories @done(22-02-11 23:55)
 	☐ Separate two types of save buttons
+	☐ Move Select read codes to a helper function
