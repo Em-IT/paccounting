@@ -50,5 +50,5 @@ Add new Cost
 	✔ Show error message in an alert @done(22-02-05 00:27)
 	✔ Show only 1 toast on error or success @done(22-02-07 08:22)
 	✔ Add all of fields @done(22-02-08 17:24)
-	☐ Dynamically place all secondary categories
+	✔ Dynamically place all secondary categories @done(22-02-11 23:55)
 	☐ Separate two types of save buttons
