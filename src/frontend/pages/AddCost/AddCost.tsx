@@ -16,12 +16,12 @@ export const AddCost = () => {
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
   const [isUnexpected, setIsUnexpected] = useState(false);
-  // const [primaryCatId, setPrimaryCatId] = useState('');
-  // const [secondaryCatId, setSecondaryCatId] = useState('');
+  const [primaryCat, setPrimaryCat] = useState({});
+  const [secondaryCat, setSecondaryCat] = useState({});
   const [description, setDescription] = useState('');
 
   const [primaryCats, setPrimaryCats] = useState([]);
-  const [secondaryCats, setSecondaryCats] = useState([]);  
+  const [secondaryCats, setSecondaryCats] = useState([]);
 
   const { data: me, dataReady, isLoading: meIsLoading, errorMessage } = 
   useAutoApi<any>(
@@ -47,14 +47,8 @@ export const AddCost = () => {
       date,
       description,
       isUnexpected,
-      primaryCat: {
-        id: '61e08a74927d9e1bc3cfbe86',
-        title: 'Food',
-      },
-      secondaryCat: {
-        id: '61e08a74927d9e1bc3cfbe87',
-        title: 'Groceries',
-      },
+      primaryCat,
+      secondaryCat,
       userId: '61e08a74927d9e1bc3cfbe79',
     },
     { 'userId': '61e08a74927d9e1bc3cfbe79' },
@@ -83,10 +77,18 @@ export const AddCost = () => {
     }
   };
 
-  const handleCatChange = (e: any) => {
-    console.log(e.target.value);
-    const sc: any = primaryCats.find((c: any) => c._id === e.target.value);
+  const handlePriCatChange = (e: any) => {
+    const id = e.target.value;
+    const title = e.target.options[e.target.selectedIndex].text;
+    const sc: any = primaryCats.find((c: any) => c._id === id);
     setSecondaryCats(sc.subCategories);
+    setPrimaryCat({ id, title });
+  };
+
+  const handleSecCatChange = (e: any) => {
+    const id = e.target.value;
+    const title = e.target.options[e.target.selectedIndex].text;
+    setSecondaryCat({ id, title });
   };
 
   return (
@@ -134,7 +136,7 @@ export const AddCost = () => {
 
             <div css={cStyles.field}>
               <label css={cStyles.label}>Primary Categories</label>
-              <select css={cStyles.input} onChange={handleCatChange}>
+              <select css={cStyles.input} onChange={handlePriCatChange}>
                 {
                   primaryCats.map((cat: any, index: number) => (
                     <option key={index} value={cat._id}>{cat.title}</option>
@@ -145,10 +147,10 @@ export const AddCost = () => {
 
             <div css={cStyles.field}>
               <label css={cStyles.label}>Secondary Categories</label>
-              <select css={cStyles.input}>
+              <select css={cStyles.input} onChange={handleSecCatChange}>
                 {
                   secondaryCats.map((cat: any, index: number) => (
-                    <option key={index}>{cat.title}</option>
+                    <option key={index} value={cat._id}>{cat.title}</option>
                   ))
                 }
               </select>
