@@ -53,5 +53,5 @@ Add new Cost
 	✔ Show only 1 toast on error or success @done(22-02-07 08:22)
 	✔ Add all of fields @done(22-02-08 17:24)
 	✔ Dynamically place all secondary categories @done(22-02-11 23:55)
+	✔ Move Select read codes to a helper function @done(22-02-13 16:37)
 	☐ Separate two types of save buttons
-	☐ Move Select read codes to a helper function
