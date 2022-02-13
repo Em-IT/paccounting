@@ -60,7 +60,7 @@ export const AddCost = () => {
   //   form: tw`bg-white rounded-lg my-4 p-4`,
   // };
 
-  const saveCost = async () => {
+  const saveCost = async (isRedirect: boolean) => {
     // console.log('save');
 
     const { data, errorMessage } = await callApi();
@@ -68,7 +68,8 @@ export const AddCost = () => {
     if (data) {
       toast.success("The cost saved successfully 👍", {
         onClose: () => {
-          location.href = '/costs';
+          if (isRedirect)
+            location.href = '/costs';
           // history.push("/home");
           // return <Redirect to='/my-costs'/>;
         },
@@ -163,7 +164,11 @@ export const AddCost = () => {
                 value={description} onChange={e => setDescription(e.target.value)} />
             </div>
 
-            <button css={[cStyles.btn, cStyles.primaryBtn]} onClick={saveCost}>
+            <button css={[cStyles.btn, cStyles.primaryBtn]} onClick={() => saveCost(false)}>
+              Save and add new item
+            </button>
+
+            <button css={[cStyles.btn]} onClick={() => saveCost(true)}>
               Save
             </button>
           </div>
