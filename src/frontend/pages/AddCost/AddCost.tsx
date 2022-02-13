@@ -9,7 +9,7 @@ import LoadingSpinner from '../../components/LoadingSpinner';
 
 import cStyles from '../../CommonStyles';
 import { useAutoApi, useManualApi } from '../../helpers/apiTools';
-import { getSelectedItem } from 'frontend/helpers/selectTools';
+import { getSelectedItem } from '../../helpers/selectTools';
 // import { Redirect } from 'react-router-dom';
 
 export const AddCost = () => {
