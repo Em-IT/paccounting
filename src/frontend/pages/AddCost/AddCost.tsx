@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import tw, { css } from 'twin.macro';
 import { toast } from 'react-toastify';
@@ -9,6 +9,7 @@ import LoadingSpinner from '../../components/LoadingSpinner';
 
 import cStyles from '../../CommonStyles';
 import { useAutoApi, useManualApi } from '../../helpers/apiTools';
+import { getSelectedItem } from 'frontend/helpers/selectTools';
 // import { Redirect } from 'react-router-dom';
 
 export const AddCost = () => {
@@ -77,18 +78,18 @@ export const AddCost = () => {
     }
   };
 
-  const handlePriCatChange = (e: any) => {
-    const id = e.target.value;
-    const title = e.target.options[e.target.selectedIndex].text;
-    const sc: any = primaryCats.find((c: any) => c._id === id);
+  const handlePriCatChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    e.preventDefault();
+    const { key, text } = getSelectedItem(e);
+    const sc: any = primaryCats.find((c: any) => c._id === key);
     setSecondaryCats(sc.subCategories);
-    setPrimaryCat({ id, title });
+    setPrimaryCat({ id: key, title: text });
   };
 
-  const handleSecCatChange = (e: any) => {
-    const id = e.target.value;
-    const title = e.target.options[e.target.selectedIndex].text;
-    setSecondaryCat({ id, title });
+  const handleSecCatChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    e.preventDefault();
+    const { key, text } = getSelectedItem(e);
+    setSecondaryCat({ id: key, title: text });
   };
 
   return (
