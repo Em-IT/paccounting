@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import tw, { css } from 'twin.macro';
 import { toast } from 'react-toastify';
@@ -31,7 +31,8 @@ export const AddCost = () => {
     { 'userId': '61e08a74927d9e1bc3cfbe79' },
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
+
     if (dataReady) {
       setPrimaryCats(me.categories);
       setSecondaryCats(me.categories[0].subCategories);
@@ -68,15 +69,26 @@ export const AddCost = () => {
     if (data) {
       toast.success("The cost saved successfully 👍", {
         onClose: () => {
-          if (isRedirect)
+          if (isRedirect) {
             location.href = '/costs';
           // history.push("/home");
           // return <Redirect to='/my-costs'/>;
+          } else {
+            resetForm();
+          }
         },
       });
     } else if (errorMessage) {
       toast.error("Error in save process: " + errorMessage);
     }
+  };
+
+  const resetForm = () => {
+    setTitle('');
+    setAmount('');
+    setDate('');
+    setIsUnexpected(false);
+    setDescription('');
   };
 
   const handlePriCatChange = (e: ChangeEvent<HTMLSelectElement>) => {
