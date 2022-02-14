@@ -55,5 +55,8 @@ Add new Cost
 	✔ Dynamically place all secondary categories @done(22-02-11 23:55)
 	✔ Move Select read codes to a helper function @done(22-02-13 16:37)
 	✔ Separate two types of save buttons @done(22-02-13 16:53)
-	☐ Clear fields after save without redirect
+	✔ Clear fields after save without redirect @done(22-02-13 20:17)
+	☐ Make the category selects a controled ones
+	☐ Set the default selected options
 	☐ Improve style of normal button
+	☐ Send userID using token
