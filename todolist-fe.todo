@@ -56,7 +56,9 @@ Add new Cost
 	✔ Move Select read codes to a helper function @done(22-02-13 16:37)
 	✔ Separate two types of save buttons @done(22-02-13 16:53)
 	✔ Clear fields after save without redirect @done(22-02-13 20:17)
+	✔ Set the default selected options @done(22-02-16 17:50)
+	☐ Improve category types & fix id & _id problem
 	☐ Make the category selects a controled ones
-	☐ Set the default selected options
+	☐ Disable fields during alert preview
 	☐ Improve style of normal button
 	☐ Send userID using token
