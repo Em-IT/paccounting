@@ -12,19 +12,33 @@ import { useAutoApi, useManualApi } from '../../helpers/apiTools';
 import { getSelectedItem } from '../../helpers/selectTools';
 // import { Redirect } from 'react-router-dom';
 
+interface ISecondaryCat {
+  id?: string;
+  _id?: string;
+  title: string;
+}
+
+interface IPrimaryCat {
+  id?: string;
+  _id?: string;
+  title: string;
+  subCategories?: Array<ISecondaryCat>;
+}
+
 export const AddCost = () => {
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
   const [isUnexpected, setIsUnexpected] = useState(false);
-  const [primaryCat, setPrimaryCat] = useState({});
-  const [secondaryCat, setSecondaryCat] = useState({});
+  const [primaryCat, setPrimaryCat] = useState<IPrimaryCat>();
+  const [secondaryCat, setSecondaryCat] = useState<ISecondaryCat>();
   const [description, setDescription] = useState('');
 
-  const [primaryCats, setPrimaryCats] = useState([]);
-  const [secondaryCats, setSecondaryCats] = useState([]);
+  const [primaryCats, setPrimaryCats] = useState<Array<IPrimaryCat>>([]);
+  const [secondaryCats, setSecondaryCats] = useState<Array<ISecondaryCat>>([]);
 
   const { data: me, dataReady, isLoading: meIsLoading, errorMessage } = 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   useAutoApi<any>(
     '/me',
     null,
@@ -36,6 +50,18 @@ export const AddCost = () => {
     if (dataReady) {
       setPrimaryCats(me.categories);
       setSecondaryCats(me.categories[0].subCategories);
+      
+      const firstPC: IPrimaryCat = me.categories[0];
+      setPrimaryCat({
+        id: firstPC._id,
+        title: firstPC.title,
+      });
+  
+      setSecondaryCat({
+        id: firstPC.subCategories && firstPC.subCategories[0]._id || '',
+        title: firstPC.subCategories && firstPC.subCategories[0].title || '',
+      });
+
     } else if (errorMessage) {
       toast.error(errorMessage);
     }
@@ -89,13 +115,24 @@ export const AddCost = () => {
     setDate('');
     setIsUnexpected(false);
     setDescription('');
+
+    setPrimaryCat({
+      id: primaryCats[0]._id,
+      title: primaryCats[0].title,
+    });
+
+    const firstPC = primaryCats[0];
+    setSecondaryCat({
+      id: firstPC.subCategories && firstPC.subCategories[0]._id || '',
+      title: firstPC.subCategories && firstPC.subCategories[0].title || '',
+    });
   };
 
   const handlePriCatChange = (e: ChangeEvent<HTMLSelectElement>) => {
     e.preventDefault();
     const { key, text } = getSelectedItem(e);
-    const sc: any = primaryCats.find((c: any) => c._id === key);
-    setSecondaryCats(sc.subCategories);
+    const sc: IPrimaryCat | undefined = primaryCats.find((c: IPrimaryCat) => c._id === key);
+    setSecondaryCats(sc?.subCategories || []);
     setPrimaryCat({ id: key, title: text });
   };
 
@@ -152,7 +189,7 @@ export const AddCost = () => {
               <label css={cStyles.label}>Primary Categories</label>
               <select css={cStyles.input} onChange={handlePriCatChange}>
                 {
-                  primaryCats.map((cat: any, index: number) => (
+                  primaryCats.map((cat: IPrimaryCat, index: number) => (
                     <option key={index} value={cat._id}>{cat.title}</option>
                   ))
                 }
@@ -163,7 +200,7 @@ export const AddCost = () => {
               <label css={cStyles.label}>Secondary Categories</label>
               <select css={cStyles.input} onChange={handleSecCatChange}>
                 {
-                  secondaryCats.map((cat: any, index: number) => (
+                  secondaryCats.map((cat: ISecondaryCat, index: number) => (
                     <option key={index} value={cat._id}>{cat.title}</option>
                   ))
                 }
