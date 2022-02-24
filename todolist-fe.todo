@@ -57,7 +57,7 @@ Add new Cost
 	✔ Separate two types of save buttons @done(22-02-13 16:53)
 	✔ Clear fields after save without redirect @done(22-02-13 20:17)
 	✔ Set the default selected options @done(22-02-16 17:50)
-	☐ Improve category types & fix id & _id problem
+	✔ Improve category types & fix id & _id problem @done(22-02-24 13:10)
 	☐ Make the category selects a controled ones
 	☐ Disable fields during alert preview
 	☐ Improve style of normal button
