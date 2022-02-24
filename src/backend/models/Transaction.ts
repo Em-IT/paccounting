@@ -23,11 +23,11 @@ export interface ITransactionPure {
   userId: mongoose.ObjectId;
   date: Date;
   primaryCat: {
-    id: Schema.Types.ObjectId,
+    _id: Schema.Types.ObjectId,
     title: string,
   };
   secondaryCat: {
-    id: Schema.Types.ObjectId,
+    _id: Schema.Types.ObjectId,
     title: string,
   };
   tags: Array<string>;
@@ -60,7 +60,7 @@ const transactionSchema: Schema = new Schema({
   },
   primaryCat: {
     type: {
-      id: {
+      _id: {
         type: Schema.Types.ObjectId,
         required: true,
       },
@@ -73,7 +73,7 @@ const transactionSchema: Schema = new Schema({
   },
   secondaryCat: {
     type: {
-      id: {
+      _id: {
         type: Schema.Types.ObjectId,
         required: true,
       },

@@ -13,14 +13,12 @@ import { getSelectedItem } from '../../helpers/selectTools';
 // import { Redirect } from 'react-router-dom';
 
 interface ISecondaryCat {
-  id?: string;
-  _id?: string;
+  _id: string;
   title: string;
 }
 
 interface IPrimaryCat {
-  id?: string;
-  _id?: string;
+  _id: string;
   title: string;
   subCategories?: Array<ISecondaryCat>;
 }
@@ -53,12 +51,12 @@ export const AddCost = () => {
       
       const firstPC: IPrimaryCat = me.categories[0];
       setPrimaryCat({
-        id: firstPC._id,
+        _id: firstPC._id,
         title: firstPC.title,
       });
   
       setSecondaryCat({
-        id: firstPC.subCategories && firstPC.subCategories[0]._id || '',
+        _id: firstPC.subCategories && firstPC.subCategories[0]._id || '',
         title: firstPC.subCategories && firstPC.subCategories[0].title || '',
       });
 
@@ -117,13 +115,13 @@ export const AddCost = () => {
     setDescription('');
 
     setPrimaryCat({
-      id: primaryCats[0]._id,
+      _id: primaryCats[0]._id,
       title: primaryCats[0].title,
     });
 
     const firstPC = primaryCats[0];
     setSecondaryCat({
-      id: firstPC.subCategories && firstPC.subCategories[0]._id || '',
+      _id: firstPC.subCategories && firstPC.subCategories[0]._id || '',
       title: firstPC.subCategories && firstPC.subCategories[0].title || '',
     });
   };
@@ -133,13 +131,13 @@ export const AddCost = () => {
     const { key, text } = getSelectedItem(e);
     const sc: IPrimaryCat | undefined = primaryCats.find((c: IPrimaryCat) => c._id === key);
     setSecondaryCats(sc?.subCategories || []);
-    setPrimaryCat({ id: key, title: text });
+    setPrimaryCat({ _id: key, title: text });
   };
 
   const handleSecCatChange = (e: ChangeEvent<HTMLSelectElement>) => {
     e.preventDefault();
     const { key, text } = getSelectedItem(e);
-    setSecondaryCat({ id: key, title: text });
+    setSecondaryCat({ _id: key, title: text });
   };
 
   return (
