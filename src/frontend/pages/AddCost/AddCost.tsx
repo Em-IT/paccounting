@@ -166,27 +166,15 @@ export const AddCost = () => {
             <Field type="checkbox" label="Is Unexpected"
               value={isUnexpected.toString()} setValue={setIsUnexpected} />
 
-            <div css={cStyles.field}>
-              <label css={cStyles.label}>Primary Categories</label>
-              <select css={cStyles.input} onChange={handlePriCatChange}>
-                {
-                  primaryCats.map((cat: IPrimaryCat, index: number) => (
-                    <option key={index} value={cat._id}>{cat.title}</option>
-                  ))
-                }
-              </select>
-            </div>
+            <Field type="select" label="Primary Categories"
+              value={""} setValue={handlePriCatChange}
+              items={primaryCats} keyField="_id" valueField="title"
+            />
 
-            <div css={cStyles.field}>
-              <label css={cStyles.label}>Secondary Categories</label>
-              <select css={cStyles.input} onChange={handleSecCatChange}>
-                {
-                  secondaryCats.map((cat: ISecondaryCat, index: number) => (
-                    <option key={index} value={cat._id}>{cat.title}</option>
-                  ))
-                }
-              </select>
-            </div>
+            <Field type="select" label="Secondary Categories"
+              value={""} setValue={handleSecCatChange}
+              items={secondaryCats} keyField="_id" valueField="title"
+            />
 
             <Field type="text" label="Description" value={description} setValue={setDescription} />
 
