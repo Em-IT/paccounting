@@ -163,14 +163,8 @@ export const AddCost = () => {
 
             <Field type="date" label="Date" value={date} setValue={setDate} />
 
-            <div css={cStyles.field}>
-              <label css={cStyles.label}>Is Unexpected</label>
-              <div  css={cStyles.input}>
-                <input type="checkbox"
-                  checked={isUnexpected}
-                  onChange={e => setIsUnexpected(e.target.checked)} />
-              </div>
-            </div>
+            <Field type="checkbox" label="Is Unexpected"
+              value={isUnexpected.toString()} setValue={setIsUnexpected} />
 
             <div css={cStyles.field}>
               <label css={cStyles.label}>Primary Categories</label>
