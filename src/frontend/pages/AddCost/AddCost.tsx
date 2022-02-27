@@ -2,15 +2,16 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import tw, { css } from 'twin.macro';
 import { toast } from 'react-toastify';
+// import { Redirect } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import PageTitle from '../../components/PageTitle';
 import LoadingSpinner from '../../components/LoadingSpinner';
+import Field from '../../components/Field';
 
 import cStyles from '../../CommonStyles';
 import { useAutoApi, useManualApi } from '../../helpers/apiTools';
 import { getSelectedItem } from '../../helpers/selectTools';
-// import { Redirect } from 'react-router-dom';
 
 interface ISecondaryCat {
   _id: string;
@@ -156,23 +157,11 @@ export const AddCost = () => {
           }} />}
 
           <div>
-            <div css={cStyles.field}>
-              <label css={cStyles.label}>Title</label>
-              <input type="text" css={cStyles.input}
-                value={title} onChange={e => setTitle(e.target.value)} />
-            </div>
+            <Field type="text" label="Title" value={title} setValue={setTitle} />
 
-            <div css={cStyles.field}>
-              <label css={cStyles.label}>Amount</label>
-              <input type="number" css={cStyles.input}
-                value={amount} onChange={e => setAmount(e.target.value)} />
-            </div>
+            <Field type="number" label="Amount" value={amount} setValue={setAmount} />
 
-            <div css={cStyles.field}>
-              <label css={cStyles.label}>Date</label>
-              <input type="date" css={cStyles.input}
-                value={date} onChange={e => setDate(e.target.value)} />
-            </div>
+            <Field type="date" label="Date" value={date} setValue={setDate} />
 
             <div css={cStyles.field}>
               <label css={cStyles.label}>Is Unexpected</label>
@@ -205,11 +194,7 @@ export const AddCost = () => {
               </select>
             </div>
 
-            <div css={cStyles.field}>
-              <label css={cStyles.label}>Description</label>
-              <input type="text" css={cStyles.input}
-                value={description} onChange={e => setDescription(e.target.value)} />
-            </div>
+            <Field type="text" label="Description" value={description} setValue={setDescription} />
 
             <button css={[cStyles.btn, cStyles.primaryBtn]} onClick={() => saveCost(false)}>
               Save and add new item
