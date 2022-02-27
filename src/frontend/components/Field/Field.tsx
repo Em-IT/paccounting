@@ -10,12 +10,15 @@ interface FieldProps {
   value: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setValue: (value: any) => void;
+  items?: Array<any>;
+  keyField?: string;
+  valueField?: string;
 }
 
 export const Field = (props: FieldProps) => {
 
-  const { type, label, value, setValue } = props;
-  const VALID_FIELD_TYPES = ["text", "number", "date", "checkbox"];
+  const { type, label, value, setValue, items, keyField, valueField } = props;
+  const VALID_FIELD_TYPES = ["text", "number", "date", "checkbox", "select"];
   const isInvalidType = !VALID_FIELD_TYPES.includes(type);
 
   return (
@@ -31,7 +34,18 @@ export const Field = (props: FieldProps) => {
         )
       }
       {
-        type !== 'checkbox' && (
+        type === 'select' && (
+          <select css={cStyles.input} onChange={setValue}>
+            {
+              items && keyField && valueField && items.map((item: any, index: number) => (
+                <option key={index} value={item[keyField]}>{item[valueField]}</option>
+              ))
+            }
+          </select>
+        )
+      }
+      {
+        type !== 'checkbox' && type !== "select" && (
           <input type={type} css={cStyles.input}
             value={isInvalidType ? "Invalid Field Type" : value}
             onChange={e => setValue(e.target.value)}
