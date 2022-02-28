@@ -30,6 +30,7 @@ Cost List
   ✔ Develop UI @done(22-01-27 07:54)
 	☐ Sort the result by date
 	☐ Add a pagination component
+	☐ Place "Add" button beside the list
 	☐ Add edit button
 	☐ Add delete button
 	☐ Add search ability
@@ -37,6 +38,7 @@ Cost List
 
 Header
 	✔ Add Navigation Items for desktop env @done(22-01-27 08:26)
+	☐ Make header sticky
 	☐ Add user avatar
 	☐ Design Logo for header
 
@@ -58,7 +60,9 @@ Add new Cost
 	✔ Clear fields after save without redirect @done(22-02-13 20:17)
 	✔ Set the default selected options @done(22-02-16 17:50)
 	✔ Improve category types & fix id & _id problem @done(22-02-24 13:10)
-	☐ Make the category selects a controled ones
-	☐ Disable fields during alert preview
+	✔ Disable fields during alert preview @done(22-02-28 17:10)
+	☐ Move Field styles to component folder
+	☐ Turn the cursor to stop icon when the fields are disabled
 	☐ Improve style of normal button
 	☐ Send userID using token
+	☐ Make the category selects a controled ones
