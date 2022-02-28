@@ -7,9 +7,11 @@ import cStyles from '../../CommonStyles';
 interface FieldProps {
   type: string;
   label: string;
+  disabled: boolean;
   value: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setValue: (value: any) => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   items?: Array<any>;
   keyField?: string;
   valueField?: string;
@@ -17,7 +19,7 @@ interface FieldProps {
 
 export const Field = (props: FieldProps) => {
 
-  const { type, label, value, setValue, items, keyField, valueField } = props;
+  const { type, label, disabled = false, value, setValue, items, keyField, valueField } = props;
   const VALID_FIELD_TYPES = ["text", "number", "date", "checkbox", "select"];
   const isInvalidType = !VALID_FIELD_TYPES.includes(type);
 
@@ -29,14 +31,17 @@ export const Field = (props: FieldProps) => {
           <div  css={cStyles.input}>
             <input type="checkbox"
               checked={value === "true"}
-              onChange={e => setValue(e.target.checked)} />
+              onChange={e => setValue(e.target.checked)}
+              disabled={disabled}
+            />
           </div>
         )
       }
       {
         type === 'select' && (
-          <select css={cStyles.input} onChange={setValue}>
+          <select css={cStyles.input} onChange={setValue} disabled={disabled}>
             {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               items && keyField && valueField && items.map((item: any, index: number) => (
                 <option key={index} value={item[keyField]}>{item[valueField]}</option>
               ))
@@ -49,7 +54,7 @@ export const Field = (props: FieldProps) => {
           <input type={type} css={cStyles.input}
             value={isInvalidType ? "Invalid Field Type" : value}
             onChange={e => setValue(e.target.value)}
-            disabled={isInvalidType}
+            disabled={isInvalidType || disabled}
           />
         )
       }
