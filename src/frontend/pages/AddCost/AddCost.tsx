@@ -36,6 +36,8 @@ export const AddCost = () => {
   const [primaryCats, setPrimaryCats] = useState<Array<IPrimaryCat>>([]);
   const [secondaryCats, setSecondaryCats] = useState<Array<ISecondaryCat>>([]);
 
+  const [isDisabled, setIsDisabled] = useState(false);
+
   const { data: me, dataReady, isLoading: meIsLoading, errorMessage } = 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   useAutoApi<any>(
@@ -89,15 +91,19 @@ export const AddCost = () => {
   const saveCost = async (isRedirect: boolean) => {
     // console.log('save');
 
+    setIsDisabled(true);
     const { data, errorMessage } = await callApi();
     
     if (data) {
       toast.success("The cost saved successfully 👍", {
         onClose: () => {
+          
+          setIsDisabled(false);
+
           if (isRedirect) {
             location.href = '/costs';
-          // history.push("/home");
-          // return <Redirect to='/my-costs'/>;
+            // history.push("/home");
+            // return <Redirect to='/my-costs'/>;
           } else {
             resetForm();
           }
@@ -105,6 +111,7 @@ export const AddCost = () => {
       });
     } else if (errorMessage) {
       toast.error("Error in save process: " + errorMessage);
+      setIsDisabled(false);
     }
   };
 
@@ -157,32 +164,37 @@ export const AddCost = () => {
           }} />}
 
           <div>
-            <Field type="text" label="Title" value={title} setValue={setTitle} />
+            <Field type="text" label="Title" disabled={isDisabled}
+              value={title} setValue={setTitle} />
 
-            <Field type="number" label="Amount" value={amount} setValue={setAmount} />
+            <Field type="number" label="Amount" disabled={isDisabled}
+              value={amount} setValue={setAmount} />
 
-            <Field type="date" label="Date" value={date} setValue={setDate} />
+            <Field type="date" label="Date" disabled={isDisabled}
+              value={date} setValue={setDate} />
 
-            <Field type="checkbox" label="Is Unexpected"
+            <Field type="checkbox" label="Is Unexpected" disabled={isDisabled}
               value={isUnexpected.toString()} setValue={setIsUnexpected} />
 
-            <Field type="select" label="Primary Categories"
+            <Field type="select" label="Primary Categories" disabled={isDisabled}
               value={""} setValue={handlePriCatChange}
               items={primaryCats} keyField="_id" valueField="title"
             />
 
-            <Field type="select" label="Secondary Categories"
+            <Field type="select" label="Secondary Categories" disabled={isDisabled}
               value={""} setValue={handleSecCatChange}
               items={secondaryCats} keyField="_id" valueField="title"
             />
 
-            <Field type="text" label="Description" value={description} setValue={setDescription} />
+            <Field type="text" label="Description" disabled={isDisabled}
+              value={description} setValue={setDescription} />
 
-            <button css={[cStyles.btn, cStyles.primaryBtn]} onClick={() => saveCost(false)}>
+            <button css={[cStyles.btn, cStyles.primaryBtn]}
+              disabled={isDisabled} onClick={() => saveCost(false)}>
               Save and add new item
             </button>
 
-            <button css={[cStyles.btn]} onClick={() => saveCost(true)}>
+            <button css={[cStyles.btn]} disabled={isDisabled} onClick={() => saveCost(true)}>
               Save
             </button>
           </div>
