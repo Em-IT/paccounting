@@ -61,8 +61,8 @@ Add new Cost
 	✔ Set the default selected options @done(22-02-16 17:50)
 	✔ Improve category types & fix id & _id problem @done(22-02-24 13:10)
 	✔ Disable fields during alert preview @done(22-02-28 17:10)
-	☐ Move Field styles to component folder
-	☐ Turn the cursor to stop icon when the fields are disabled
+	✔ Move Field styles to component folder @done(22-03-04 23:31)
+	✔ Turn the cursor to stop icon when the fields are disabled @done(22-03-04 23:38)
 	☐ Improve style of normal button
 	☐ Send userID using token
 	☐ Make the category selects a controled ones
