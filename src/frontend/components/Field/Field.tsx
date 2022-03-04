@@ -28,7 +28,7 @@ export const Field = (props: FieldProps) => {
       <label css={fieldStyles.label}>{label}</label>
       {
         type === 'checkbox' && (
-          <div  css={fieldStyles.input}>
+          <div css={[fieldStyles.input, disabled && tw`cursor-not-allowed`]}>
             <input type="checkbox"
               checked={value === "true"}
               onChange={e => setValue(e.target.checked)}
@@ -39,7 +39,9 @@ export const Field = (props: FieldProps) => {
       }
       {
         type === 'select' && (
-          <select css={fieldStyles.input} onChange={setValue} disabled={disabled}>
+          <select css={[fieldStyles.input, disabled && tw`cursor-not-allowed`]}
+            onChange={setValue} disabled={disabled}
+          >
             {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               items && keyField && valueField && items.map((item: any, index: number) => (
@@ -51,7 +53,7 @@ export const Field = (props: FieldProps) => {
       }
       {
         type !== 'checkbox' && type !== "select" && (
-          <input type={type} css={fieldStyles.input}
+          <input type={type} css={[fieldStyles.input, disabled && tw`cursor-not-allowed`]}
             value={isInvalidType ? "Invalid Field Type" : value}
             onChange={e => setValue(e.target.value)}
             disabled={isInvalidType || disabled}
