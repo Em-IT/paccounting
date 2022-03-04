@@ -2,7 +2,7 @@ import React from 'react';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import tw, { css } from 'twin.macro';
 
-import cStyles from '../../CommonStyles';
+import fieldStyles from './Field.styles';
 
 interface FieldProps {
   type: string;
@@ -24,11 +24,11 @@ export const Field = (props: FieldProps) => {
   const isInvalidType = !VALID_FIELD_TYPES.includes(type);
 
   return (
-    <div css={cStyles.field}>
-      <label css={cStyles.label}>{label}</label>
+    <div css={fieldStyles.field}>
+      <label css={fieldStyles.label}>{label}</label>
       {
         type === 'checkbox' && (
-          <div  css={cStyles.input}>
+          <div  css={fieldStyles.input}>
             <input type="checkbox"
               checked={value === "true"}
               onChange={e => setValue(e.target.checked)}
@@ -39,7 +39,7 @@ export const Field = (props: FieldProps) => {
       }
       {
         type === 'select' && (
-          <select css={cStyles.input} onChange={setValue} disabled={disabled}>
+          <select css={fieldStyles.input} onChange={setValue} disabled={disabled}>
             {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               items && keyField && valueField && items.map((item: any, index: number) => (
@@ -51,7 +51,7 @@ export const Field = (props: FieldProps) => {
       }
       {
         type !== 'checkbox' && type !== "select" && (
-          <input type={type} css={cStyles.input}
+          <input type={type} css={fieldStyles.input}
             value={isInvalidType ? "Invalid Field Type" : value}
             onChange={e => setValue(e.target.value)}
             disabled={isInvalidType || disabled}
