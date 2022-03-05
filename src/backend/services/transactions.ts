@@ -1,8 +1,11 @@
 import { ObjectId } from "mongodb";
+
 import Transaction, { ITransaction } from "../models/Transaction";
 
 export const readUserCosts = async (userId: ObjectId) => {
-  return await Transaction.find({ userId: userId, isIncome: false });
+  return await Transaction
+    .find({ userId: userId, isIncome: false })
+    .sort({ date: -1 });
 };
 
 export const addUserTransaction = async (transaction: ITransaction) => {
