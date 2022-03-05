@@ -28,7 +28,7 @@ Cost List
   ✔ Read transaction list @done(22-01-15 10:30)
   ✔ Design TransactionList UI @done(22-01-27 07:54)
   ✔ Develop UI @done(22-01-27 07:54)
-	☐ Sort the result by date
+	✔ Sort the result by date @started(22-03-05 23:50)
 	☐ Add a pagination component
 	☐ Place "Add" button beside the list
 	☐ Add edit button
