@@ -29,7 +29,9 @@ Cost List
   ✔ Design TransactionList UI @done(22-01-27 07:54)
   ✔ Develop UI @done(22-01-27 07:54)
 	✔ Sort the result by date @started(22-03-05 23:50)
-	☐ Add a pagination component
+	✔ Add a pagination component @done(22-03-06 23:43)
+	☐ Improve pagination UI
+	☐ Move pagination codes to a component
 	☐ Place "Add" button beside the list
 	☐ Add edit button
 	☐ Add delete button
