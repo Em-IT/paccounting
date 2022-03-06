@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import tw, { css } from 'twin.macro';
 
@@ -12,13 +12,33 @@ import ICost from '../../types/ICost';
 import { useAutoApi } from '../../helpers/apiTools';
 
 const CostsList = () => {
+  const [page, setPage] = useState(1);
 
-  const { dataArray: costs, dataReady, isLoading, errorMessage } = 
+  const { dataArray: costs, totalCount, dataReady, isLoading, errorMessage } = 
   useAutoApi<ICost>(
-    '/my-costs',
+    '/my-costs/' + page,
     null,
     { 'userId': '61e08a74927d9e1bc3cfbe79' },
   );
+  console.log('re-render');
+
+  const firstPage = () => {
+    setPage(1);
+  };
+
+  const prevPage = () => {
+    setPage(Math.max(1, page - 1));
+  };
+
+  const nextPage = () => {
+    const MAX_PAGE = Math.ceil(totalCount / 10);
+    setPage(Math.min(MAX_PAGE, page + 1));
+  };
+
+  const lastPage = () => {
+    const MAX_PAGE = Math.ceil(totalCount / 10);
+    setPage(MAX_PAGE);
+  };
 
   // TODO: read currency from api
   return (
@@ -62,6 +82,14 @@ const CostsList = () => {
               ))}
             </tbody>
           </table>
+
+          <div>
+            <button onClick={firstPage}>First Page</button>
+            <button onClick={prevPage}>Prev Page</button>
+            <span>{page}</span>
+            <button onClick={nextPage}>Next Page</button>
+            <button onClick={lastPage}>Last Page</button>
+          </div>
 
         </div> {/* Container */}
       </div>
