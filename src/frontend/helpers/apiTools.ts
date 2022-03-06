@@ -12,6 +12,7 @@ import apiBaseUrl from "../apiUrl";
 export interface IGetCapsule<Type> {
   data: Type | undefined;
   dataArray: Array<Type>;
+  totalCount: number;
   dataReady: boolean;
   isLoading: boolean;
   errorMessage: string;
@@ -25,6 +26,7 @@ export const useAutoApi = <Type>(apiName: string,
   const [isLoading, setIsLoading] = useState(true);
   const [isArray, setIsArray] = useState(true);
   const [data, setData] = useState<Type>();
+  const [totalCount, setTotalCount] = useState(0);
   const [dataArray, setDataArray] = useState<Array<Type>>([]);
   const [errorMessage, setErrorMessage] = useState('');
   const dataReady = !isLoading && !errorMessage && (
@@ -33,7 +35,7 @@ export const useAutoApi = <Type>(apiName: string,
 
   useEffect(() => {
     callApi();
-  }, []);
+  }, [apiName]);
 
   const callApi = async () => {
     setIsLoading(true);
@@ -64,15 +66,18 @@ export const useAutoApi = <Type>(apiName: string,
         if (Array.isArray(result.data.data)) {
           setDataArray(result.data.data);
           setIsArray(true);
+          setTotalCount(result.data.total);
         } else {
           setData(result?.data?.data);
           setIsArray(false);
+          setTotalCount(1);
         }
         setErrorMessage('');
 
       } else {
         setData(undefined);
         setDataArray([]);
+        setTotalCount(0);
         setErrorMessage(result?.data?.errorMessage);
       }
 
@@ -85,7 +90,7 @@ export const useAutoApi = <Type>(apiName: string,
   };
 
   // return { data: (data || dataArray), dataReady, isLoading, errorMessage };
-  return { data, dataArray, dataReady, isLoading, errorMessage };
+  return { data, dataArray, totalCount, dataReady, isLoading, errorMessage };
 };
 
 export interface IFinalSendCapsule<Type> {
