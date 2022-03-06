@@ -1,7 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function capsulateData(data: any, error?: any) {
+export function capsulateData(data: any, total?: number, error?: any) {
   const result = {
     data: null,
+    total: 0,
     isSuccessful: true,
     errorMessage: '',
   };
@@ -10,6 +11,7 @@ export function capsulateData(data: any, error?: any) {
     result.isSuccessful = false;
   } else {
     result.data = data;
+    result.total = total || 1;
   }
   return result;
 }
