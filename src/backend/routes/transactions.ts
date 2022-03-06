@@ -5,6 +5,7 @@ import { ObjectId } from 'mongodb';
 
 import {
   addUserTransaction,
+  readTotalUserCosts,
   readUserCosts,
 } from '../services/transactions';
 import { capsulateData } from '../helpers/apiTools';
@@ -12,9 +13,11 @@ import { logApi } from './../helpers/logTools';
 
 const router = express.Router();
 
-router.get('/my-costs',
+router.get('/my-costs/:page?',
   async (req: Request, res: Response) => {
-    logApi('Read User Transactions');
+    const page: number = req.params.page ? parseInt(req.params.page) : 1;
+    const limit = 10;
+    logApi('Read My Cost Transactions, Page=', page);
 
     try {
       // TODO: read userId from auth token
@@ -23,14 +26,15 @@ router.get('/my-costs',
         '61e08a74927d9e1bc3cfbe79',
       );
 
-      const transactions = await readUserCosts(userId);
+      const transactions = await readUserCosts(userId, page, limit);
+      const total = await readTotalUserCosts(userId);
       res
         .status(StatusCodes.OK)
-        .json(capsulateData(transactions));
+        .json(capsulateData(transactions, total));
     } catch (error) {
       res
         .status(StatusCodes.INTERNAL_SERVER_ERROR)
-        .json(capsulateData(null, error));
+        .json(capsulateData(null, 0, error));
     }
   },
 );
@@ -61,7 +65,7 @@ router.post('/cost', [
   } catch (error) {
     res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json(capsulateData(null, error));
+      .json(capsulateData(null, 0, error));
   }
 });
 
