@@ -10,6 +10,7 @@ import PageTitle from '../../components/PageTitle';
 
 import ICost from '../../types/ICost';
 import { useAutoApi } from '../../helpers/apiTools';
+import cStyles from '../../CommonStyles';
 
 const CostsList = () => {
   const [page, setPage] = useState(1);
@@ -83,12 +84,12 @@ const CostsList = () => {
             </tbody>
           </table>
 
-          <div>
-            <button onClick={firstPage}>First Page</button>
-            <button onClick={prevPage}>Prev Page</button>
+          <div tw='mx-auto flex justify-center items-center gap-4 my-2'>
+            <button css={[cStyles.btn, cStyles.primaryBtn]} onClick={firstPage}>First Page</button>
+            <button css={[cStyles.btn, cStyles.primaryBtn]} onClick={prevPage}>Prev Page</button>
             <span>{page}</span>
-            <button onClick={nextPage}>Next Page</button>
-            <button onClick={lastPage}>Last Page</button>
+            <button css={[cStyles.btn, cStyles.primaryBtn]} onClick={nextPage}>Next Page</button>
+            <button css={[cStyles.btn, cStyles.primaryBtn]} onClick={lastPage}>Last Page</button>
           </div>
 
         </div> {/* Container */}
