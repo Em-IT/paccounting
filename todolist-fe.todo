@@ -30,8 +30,9 @@ Cost List
   ✔ Develop UI @done(22-01-27 07:54)
 	✔ Sort the result by date @started(22-03-05 23:50)
 	✔ Add a pagination component @done(22-03-06 23:43)
-	☐ Improve pagination UI
+	✔ Improve pagination UI @done(22-03-07 15:55)
 	☐ Move pagination codes to a component
+	☐ Add icon for pagination buttons
 	☐ Place "Add" button beside the list
 	☐ Add edit button
 	☐ Add delete button
