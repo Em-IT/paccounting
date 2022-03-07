@@ -87,7 +87,7 @@ const CostsList = () => {
           <div tw='mx-auto flex justify-center items-center gap-4 my-2'>
             <button css={[cStyles.btn, cStyles.primaryBtn]} onClick={firstPage}>First Page</button>
             <button css={[cStyles.btn, cStyles.primaryBtn]} onClick={prevPage}>Prev Page</button>
-            <span>{page}</span>
+            <span>{page} / {Math.ceil(totalCount / 10)}</span>
             <button css={[cStyles.btn, cStyles.primaryBtn]} onClick={nextPage}>Next Page</button>
             <button css={[cStyles.btn, cStyles.primaryBtn]} onClick={lastPage}>Last Page</button>
           </div>
