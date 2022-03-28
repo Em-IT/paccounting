@@ -61,7 +61,7 @@ router.post('/user',
     } catch (error) {
       return res
         .status(StatusCodes.INTERNAL_SERVER_ERROR)
-        .json(capsulateData(null, error));
+        .json(capsulateData(null, 0, error));
     }
   },
 );
@@ -93,7 +93,7 @@ router.get('/me',
     } catch (error) {
       return res
         .status(StatusCodes.INTERNAL_SERVER_ERROR)
-        .json(capsulateData(null, error));
+        .json(capsulateData(null, 0, error));
     }
   });
 

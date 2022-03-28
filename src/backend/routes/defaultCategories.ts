@@ -22,7 +22,7 @@ router.get('/defaultCategories',
     } catch (error) {
       res
         .status(StatusCodes.INTERNAL_SERVER_ERROR)
-        .json(capsulateData(null, error));
+        .json(capsulateData(null, 0, error));
     }
   },
 );
@@ -40,7 +40,7 @@ router.post('/defaultCategory', async (req: Request, res: Response) => {
   } catch (error) {
     res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json(capsulateData(null, error));
+      .json(capsulateData(null, 0, error));
   }
 });
 

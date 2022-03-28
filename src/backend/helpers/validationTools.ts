@@ -13,7 +13,7 @@ export const processedValidationResult = (req: Request, res: Response) => {
 
     return res
       .status(StatusCodes.BAD_REQUEST)
-      .json(capsulateData(null, errorsStr));
+      .json(capsulateData(null, 0, errorsStr));
   }
   return null;
 };
