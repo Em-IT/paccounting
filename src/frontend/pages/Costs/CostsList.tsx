@@ -7,10 +7,11 @@ import CostTableRow from './CostTableRow';
 import Header from '../../components/Header';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import PageTitle from '../../components/PageTitle';
+import Paginator from '../../components/Paginator';
 
 import ICost from '../../types/ICost';
 import { useAutoApi } from '../../helpers/apiTools';
-import cStyles from '../../CommonStyles';
+// import cStyles from '../../CommonStyles';
 
 const CostsList = () => {
   const [page, setPage] = useState(1);
@@ -22,24 +23,6 @@ const CostsList = () => {
     { 'userId': '61e08a74927d9e1bc3cfbe79' },
   );
   console.log('re-render');
-
-  const firstPage = () => {
-    setPage(1);
-  };
-
-  const prevPage = () => {
-    setPage(Math.max(1, page - 1));
-  };
-
-  const nextPage = () => {
-    const MAX_PAGE = Math.ceil(totalCount / 10);
-    setPage(Math.min(MAX_PAGE, page + 1));
-  };
-
-  const lastPage = () => {
-    const MAX_PAGE = Math.ceil(totalCount / 10);
-    setPage(MAX_PAGE);
-  };
 
   // TODO: read currency from api
   return (
@@ -84,13 +67,7 @@ const CostsList = () => {
             </tbody>
           </table>
 
-          <div tw='mx-auto flex justify-center items-center gap-4 my-2'>
-            <button css={[cStyles.btn, cStyles.primaryBtn]} onClick={firstPage}>First Page</button>
-            <button css={[cStyles.btn, cStyles.primaryBtn]} onClick={prevPage}>Prev Page</button>
-            <span>{page} / {Math.ceil(totalCount / 10)}</span>
-            <button css={[cStyles.btn, cStyles.primaryBtn]} onClick={nextPage}>Next Page</button>
-            <button css={[cStyles.btn, cStyles.primaryBtn]} onClick={lastPage}>Last Page</button>
-          </div>
+          <Paginator totalCount={totalCount} page={page} setPage={setPage} />
 
         </div> {/* Container */}
       </div>
