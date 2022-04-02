@@ -34,6 +34,8 @@ Cost List
 	✔ Move pagination codes to a component @done(22-03-28 08:57)
 	✔ Add icon for pagination buttons @done(22-03-28 09:18)
 	✔ Place "Add" button beside the list @done(22-04-02 18:47)
+	☐ Add action for float add btn
+	☐ Hide add btn in desktop
 	☐ Lazy loading in mobile size
 	☐ Add edit button
 	☐ Add delete button
