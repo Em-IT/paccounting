@@ -8,6 +8,7 @@ import Header from '../../components/Header';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import PageTitle from '../../components/PageTitle';
 import Paginator from '../../components/Paginator';
+import { FloatAddBtn } from '../../components/FloatAddBtn/FloatAddBtn';
 
 import ICost from '../../types/ICost';
 import { useAutoApi } from '../../helpers/apiTools';
@@ -68,6 +69,8 @@ const CostsList = () => {
           </table>
 
           <Paginator totalCount={totalCount} page={page} setPage={setPage} />
+          
+          <FloatAddBtn />
 
         </div> {/* Container */}
       </div>
