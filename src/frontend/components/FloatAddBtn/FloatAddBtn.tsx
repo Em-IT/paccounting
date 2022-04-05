@@ -1,9 +1,12 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 import FloatBtn from '../FloatBtn';
 
 export const FloatAddBtn = () => {
+  const history = useHistory();
+
   const handleClick = () => {
-    console.log('click');
+    history.push('/add-cost');
   };
 
   return (
