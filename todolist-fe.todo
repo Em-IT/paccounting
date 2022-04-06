@@ -36,9 +36,12 @@ Cost List
 	✔ Place "Add" button beside the list @done(22-04-02 18:47)
 	✔ Add action for float add btn @done(22-04-05 06:07)
 	✔ Hide add btn in desktop @done(22-04-05 06:03)
+	✔ Add edit button @done(22-04-06 08:47)
+	✔ Add delete button @done(22-04-06 08:47)
+	☐ Add delete functionality
+	☐ Add edit functionality
+	☐ Add edit & delete buttons to mobile view
 	☐ Lazy loading in mobile size
-	☐ Add edit button
-	☐ Add delete button
 	☐ Add search ability
 	☐ Add date explorer
 
